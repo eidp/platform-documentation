@@ -1,0 +1,73 @@
+import {themes as prismThemes} from 'prism-react-renderer';
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
+
+// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
+
+const config: Config = {
+  title: 'EIDP Platform Docs',
+  tagline: 'Thé European Internal Developer Platform',
+  favicon: 'img/favicon.png',
+
+
+  // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
+  future: {
+    v4: true, // Improve compatibility with the upcoming Docusaurus v4
+  },
+
+  url: 'https://docs.eidp.com',
+  baseUrl: '/',
+
+  // GitHub pages deployment config.
+  organizationName: 'eidp',
+  projectName: 'platform-documentation',
+
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en'],
+  },
+
+  presets: [
+    [
+      'classic',
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      {
+        docs: {
+          routeBasePath: '/',
+          sidebarPath: './sidebars.ts',
+          editCurrentVersion: true,
+          showLastUpdateTime: true,
+        },
+        blog: false,
+        theme: {
+          customCss: require.resolve('./src/css/custom.css'),
+        },
+      } satisfies Preset.Options,
+    ],
+  ],
+
+  themeConfig: {
+    navbar: {
+      logo: { alt: 'EIDP Logo', src: 'img/logo-light.svg', srcDark: 'img/logo-dark.svg' },
+      items: [
+        { type: 'docSidebar', sidebarId: 'platform', position: 'left', label: 'Documentation' },
+        { type: 'search', position: 'right' },
+        { href: 'https://status.eidp.com', label: 'Status', position: 'right' },
+        { type: 'html', position: 'right', value: '<img src="/img/applications-you-control.svg" alt="applications you control"/>' },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      copyright: `Copyright © ${new Date().getFullYear()} EIDP. All rights reserved.`,
+    },
+    prism: {
+      theme: prismThemes.github,
+      darkTheme: prismThemes.dracula,
+    },
+  } satisfies Preset.ThemeConfig,
+};
+
+export default config;
