@@ -33,7 +33,5 @@ Key pillars:
 Every customer has an isolated control plane and runtime boundary. No runtime resources (clusters, registries, object storage buckets) are shared across tenants. 
 Identity, audit, network ingress, and encryption domains are isolated to enforce hard multi‑tenancy while still enabling rapid upgrades.
 
-See the [Tenant Isolation Guide](guides/tenant-isolation) for practical implications.
-
 ## Need Help?
 Open a support ticket via your customer portal or contact your assigned Customer Platform Engineer.
