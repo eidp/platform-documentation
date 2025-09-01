@@ -49,13 +49,19 @@ const config: Config = {
     ],
   ],
 
+  plugins: [[ require.resolve('docusaurus-lunr-search'), {
+      languages: ['en'],
+      highlightResult: true
+    }]],
+
   themeConfig: {
     navbar: {
       logo: { alt: 'EIDP Logo', src: 'img/logo-light.svg', srcDark: 'img/logo-dark.svg' },
       items: [
         { type: 'docSidebar', sidebarId: 'platform', position: 'left', label: 'Documentation' },
-        { type: 'search', position: 'right' },
         { href: 'https://status.eidp.com', label: 'Status', position: 'right' },
+        { href: 'https://eidp.com', label: 'eidp.com', position: 'right' },
+        { type: 'search', position: 'right' },
         { type: 'html', position: 'right', value: '<img src="/img/applications-you-control.svg" alt="applications you control"/>' },
       ],
     },

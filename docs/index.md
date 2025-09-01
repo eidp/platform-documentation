@@ -4,7 +4,7 @@ sidebar_label: Overview
 slug: /
 ---
 
-# EIDP Internal Developer Platform
+# EIDP Platform Documentation
 
 Welcome to the documentation for the European Internal Developer Platform (EIDP). This site helps customer development teams onboard quickly, ship reliably, and leverage the platform's secure, sovereign, and scalable capabilities. Each customer is provisioned their own isolated instance (tenant) of the platform.
 
