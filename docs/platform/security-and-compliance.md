@@ -70,4 +70,4 @@ Available via support portal:
 
 ## Reporting Issues
 
-Security issues: contact <security@eidp.com> (PGP key in portal). Public bounty program (private early access) roadmap.
+Security issues: contact [security@eidp.com](mailto:security@eidp.com) (PGP key in portal). Public bounty program (private early access) roadmap.
