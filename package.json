@@ -21,7 +21,7 @@
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\"",
     "lint:md": "markdownlint \"docs/**/*.md\" \"*.md\"",
     "lint:md:fix": "markdownlint \"docs/**/*.md\" \"*.md\" --fix",
-    "prepare": "pre-commit install"
+    "prepare":"if test -z \"$CI\" ; then pre-commit install ; fi "
   },
   "dependencies": {
     "@docusaurus/core": "^3.8.1",
