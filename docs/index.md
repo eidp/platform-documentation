@@ -27,12 +27,6 @@ Key pillars:
 | Guides     | Task‑based walkthroughs (getting started, first deploy, tenant isolation) |
 | Operations | Day‑2 usage: environments, CI/CD, monitoring & logging                    |
 
-## Quick Start
-
-1. Read the [Getting Started Guide](guides/getting-started) to claim or access your tenant.
-2. Bootstrap your first application using a template.
-3. Commit & push to trigger CI and deploy to a dev environment.
-
 ## Multi‑Tenant Model
 
 Every customer has an isolated control plane and runtime boundary. No runtime resources (clusters, registries, object storage buckets) are shared across tenants.
@@ -40,4 +34,4 @@ Identity, audit, network ingress, and encryption domains are isolated to enforce
 
 ## Need Help?
 
-Open a support ticket via your customer portal or contact your assigned Customer Platform Engineer.
+[//]: # (TODO: What shall we do, Discord maybe? or some other form of 'community' support?)
