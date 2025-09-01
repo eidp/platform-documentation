@@ -1,6 +1,7 @@
 ---
 sidebar_label: Architecture
 ---
+
 # Architecture
 
 EIDP uses a layered, cloud‑native architecture optimized for instance isolation, scalability, and operability.

@@ -10,7 +10,7 @@ extensible for team-specific needs.
 ## Pipeline Stages (Default Golden Path)
 
 | Order | Stage              | Purpose                                      | Failure Effect                 |
-|-------|--------------------|----------------------------------------------|--------------------------------|
+| ----- | ------------------ | -------------------------------------------- | ------------------------------ |
 | 1     | Prepare            | Restore cache, detect language stack         | Blocks subsequent stages       |
 | 2     | Build              | Compile/package container image & Helm chart | Stops pipeline                 |
 | 3     | Test               | Unit + integration tests                     | Failing tests halt promotion   |

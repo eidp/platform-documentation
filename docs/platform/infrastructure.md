@@ -9,18 +9,18 @@ enforcing compliance and sovereignty requirements.
 
 ## Core Components (Per Instance Unless Noted)
 
-| Component               | Scope                       | Purpose                                | Notes                                                     |
-|-------------------------|-----------------------------|----------------------------------------|-----------------------------------------------------------|
-| Control Plane Services  | Shared (logically isolated) | APIs, policy evaluation, orchestration | Network + data isolation boundaries enforced              |
-| Kubernetes Clusters     | Per Environment Tier        | Run containerized workloads            | Multi‑AZ, CIS benchmark hardened                          |
-| Container Registry      | Per Instance                | Store & scan images                    | Vulnerability + provenance scanning on push               |
-| Secret Vault            | Per Instance                | Store static & dynamic secrets         | KMS‑backed, envelope encryption                           |
-| Managed Data Services   | Optional Per Workload       | Common data needs (Postgres, etc)      | Provisioned through our app/service provisioning template |
-| Observability Stack     | Per Instance                | Metrics, logs, traces, dashboards      | Aggregated & retention tiered                             |
+| Component              | Scope                       | Purpose                                | Notes                                                     |
+| ---------------------- | --------------------------- | -------------------------------------- | --------------------------------------------------------- |
+| Control Plane Services | Shared (logically isolated) | APIs, policy evaluation, orchestration | Network + data isolation boundaries enforced              |
+| Kubernetes Clusters    | Per Environment Tier        | Run containerized workloads            | Multi‑AZ, CIS benchmark hardened                          |
+| Container Registry     | Per Instance                | Store & scan images                    | Vulnerability + provenance scanning on push               |
+| Secret Vault           | Per Instance                | Store static & dynamic secrets         | KMS‑backed, envelope encryption                           |
+| Managed Data Services  | Optional Per Workload       | Common data needs (Postgres, etc)      | Provisioned through our app/service provisioning template |
+| Observability Stack    | Per Instance                | Metrics, logs, traces, dashboards      | Aggregated & retention tiered                             |
 
 ## Regions & Data Residency
 
-All resources are deployed exclusively within EU regions in data centers that are fully owned by European companies. 
+All resources are deployed exclusively within EU regions in data centers that are fully owned by European companies.
 
 ## Network Topology
 
@@ -31,7 +31,7 @@ All resources are deployed exclusively within EU regions in data centers that ar
 ## Storage & Encryption
 
 | Data Type          | Encryption                  | Rotation         | Additional Controls          |
-|--------------------|-----------------------------|------------------|------------------------------|
+| ------------------ | --------------------------- | ---------------- | ---------------------------- |
 | Secrets            | KMS + envelope              | Automatic        | Access logged & alerting     |
 | Persistent Volumes | Provider encryption at rest | Provider managed | Snapshots + integrity checks |
 | Images             | Registry encryption at rest | Provider managed | Immutable tags (policy)      |
@@ -52,7 +52,7 @@ All resources are deployed exclusively within EU regions in data centers that ar
 ## Backups & Disaster Recovery
 
 | Artifact                    | Frequency    | Retention    | Restore Target           |
-|-----------------------------|--------------|--------------|--------------------------|
+| --------------------------- | ------------ | ------------ | ------------------------ |
 | Kubernetes etcd (cluster)   | Daily        | 30 days      | Cluster control recovery |
 | Persistent Volume Snapshots | Daily        | 14–30 days   | Data restore             |
 | Databases (managed)         | Configurable | Configurable | Point-in-time recovery   |

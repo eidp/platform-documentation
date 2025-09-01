@@ -1,0 +1,23 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v6.0.0
+  hooks:
+  - id: trailing-whitespace
+  - id: end-of-file-fixer
+    types: [ yaml ]
+  - id: check-yaml
+  - id: check-added-large-files
+- repo: https://github.com/igorshubovych/markdownlint-cli
+  rev: v0.45.0
+  hooks:
+    - id: markdownlint
+      args: ["--fix"]
+- repo: local
+  hooks:
+    - id: prettier
+      name: run prettier
+      language: system
+      files: ^.*$
+      types_or: [javascript, json, css]
+      entry: |
+        bash -c 'npm run format "${@}"' --

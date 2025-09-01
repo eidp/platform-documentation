@@ -10,7 +10,7 @@ standards (ISO 27001, SOC 2). This page summarizes controls you interact with as
 ## Shared Responsibility Model
 
 | Layer                  | Platform Responsibility                     | Customer Responsibility                |
-|------------------------|---------------------------------------------|----------------------------------------|
+| ---------------------- | ------------------------------------------- | -------------------------------------- |
 | Physical / Data Center | Provider selection, certifications          | N/A                                    |
 | Network & Perimeter    | Ingress security, WAF, DDoS mitigation      | App layer hardening                    |
 | Control Plane          | Secure SDLC, patching, policy engine        | API key hygiene, RBAC config           |
@@ -28,7 +28,7 @@ standards (ISO 27001, SOC 2). This page summarizes controls you interact with as
 ## Supply Chain Security
 
 | Stage  | Control                                                               |
-|--------|-----------------------------------------------------------------------|
+| ------ | --------------------------------------------------------------------- |
 | Build  | Isolated build runners, dependency caching with checksum verification |
 | Scan   | SCA + container image vulnerability scan (policy gates)               |
 | Sign   | Image signing + provenance attestation (SLSA level target)            |
@@ -70,4 +70,4 @@ Available via support portal:
 
 ## Reporting Issues
 
-Security issues: contact security@eidp.com (PGP key in portal). Public bounty program (private early access) roadmap.
+Security issues: contact <security@eidp.com> (PGP key in portal). Public bounty program (private early access) roadmap.

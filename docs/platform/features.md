@@ -10,7 +10,7 @@ user value, and key security / compliance notes.
 ## Summary
 
 | Feature                         | Description                                                 | Primary Value                | Notes                       |
-|---------------------------------|-------------------------------------------------------------|------------------------------|-----------------------------|
+| ------------------------------- | ----------------------------------------------------------- | ---------------------------- | --------------------------- |
 | Instance Isolation              | Dedicated control & runtime boundary per customer           | Hard multi‑tenancy           | Separate encryption keys    |
 | Runtime Orchestration           | Managed Kubernetes clusters (per env tier)                  | Elastic scaling & resilience | CIS‑hardened base images    |
 | Container Registry              | Private, per‑instance registry                              | Secure image storage         | Vulnerability scans on push |
@@ -41,4 +41,3 @@ scheduled job). They accelerate delivery while maintaining standards for securit
 - Mandatory image provenance attestations.
 - Automated SBOM generation & vulnerability scanning.
 - Continuous configuration drift detection through our GitOps model.
-

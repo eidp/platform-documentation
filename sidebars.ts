@@ -1,11 +1,11 @@
-import type {SidebarsConfig} from '@docusaurus/plugin-content-docs';
+import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   platform: [
     {
       type: 'doc',
       id: 'index',
-      label: 'Overview'
+      label: 'Overview',
     },
     {
       type: 'category',
@@ -15,8 +15,8 @@ const sidebars: SidebarsConfig = {
         'platform/features',
         'platform/architecture',
         'platform/infrastructure',
-        'platform/security-and-compliance'
-      ]
+        'platform/security-and-compliance',
+      ],
     },
     // {
     //   type: 'category',
@@ -30,10 +30,7 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'CI/CD',
-      items: [
-        'cicd/introduction',
-        'cicd/github-actions'
-      ]
+      items: ['cicd/introduction', 'cicd/github-actions'],
     },
     // {
     //   type: 'category',
@@ -50,7 +47,7 @@ const sidebars: SidebarsConfig = {
     //     'reference/cli'
     //   ]
     // }
-  ]
+  ],
 };
 
 export default sidebars;
