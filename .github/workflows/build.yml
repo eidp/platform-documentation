@@ -14,7 +14,7 @@ env:
 
 jobs:
   build:
-    runs-on: kubernetes-runner
+    runs-on: dind-runner
 
     strategy:
       matrix:
