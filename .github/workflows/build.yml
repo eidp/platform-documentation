@@ -85,9 +85,9 @@ jobs:
       shell: bash
       env:
         DIGEST: ${{ steps.build-and-push.outputs.digest }}
-        TAGS: ${{ steps.docker_meta.outputs.tags }}
+        TAGS: ${{ steps.meta.outputs.tags }}
       run: |
-        images="${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}"
+        images=""
         for tag in ${TAGS}; do
           images+="${tag}@${DIGEST} "
         done
