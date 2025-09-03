@@ -82,6 +82,7 @@ jobs:
         cache-to: type=gha,mode=max
 
     - name: Sign the Docker image(s) with cosign
+      shell: bash
       env:
         DIGEST: ${{ steps.build-and-push.outputs.digest }}
         TAGS: ${{ steps.docker_meta.outputs.tags }}
