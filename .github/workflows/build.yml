@@ -9,7 +9,8 @@ on:
     - main
 
 env:
-  IMAGE_NAME: ${{ github.repository }}/platform-documentation
+  IMAGE_NAME: platform-documentation
+  REGISTRY: ${{ secrets.HARBOR_HOST }}
 
 jobs:
   build:
@@ -44,7 +45,7 @@ jobs:
       if: github.event_name != 'pull_request'
       uses: docker/login-action@v3.5.0
       with:
-        registry: ${{ secrets.HARBOR_HOST }}
+        registry: ${{ env.REGISTRY }}
         username: ${{ secrets.HARBOR_USERNAME }}
         password: ${{ secrets.HARBOR_PASSWORD }}
 
@@ -54,19 +55,19 @@ jobs:
       with:
         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
         tags: |
-          type=ref,event=branch
-          type=ref,event=pr
-          type=sha,prefix={{branch}}-
+          type=semver,pattern={{version}}
+          type=sha,prefix=
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6.18.0
       with:
         context: .
-        sbom: true
         platforms: linux/amd64,linux/arm64
-        push: ${{ github.event_name != 'pull_request' }}
+        push: true
         tags: ${{ steps.meta.outputs.tags }}
         labels: ${{ steps.meta.outputs.labels }}
+        sbom: true
+        provenance: mode=max
         cache-from: type=gha
         cache-to: type=gha,mode=max
 
