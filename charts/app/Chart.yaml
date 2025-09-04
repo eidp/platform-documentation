@@ -1,0 +1,17 @@
+apiVersion: v2
+name: platform-documentation
+description: A Helm chart for the EIDP Platform Documentation
+type: application
+version: 0.1.0 # Will be replaced by the CI/CD pipeline
+appVersion: 5d98435 # Will be replaced by the CI/CD pipeline
+home: https://github.com/eidp/platform-documentation
+sources:
+  - https://github.com/eidp/platform-documentation
+maintainers:
+  - name: EIDP Team
+    email: platform@eidp.com
+keywords:
+  - documentation
+  - platform
+  - docusaurus
+  - nginx
