@@ -15,7 +15,7 @@ jobs:
 
     - name: Fetch commit version
       id: fetch-commit-version
-      uses: eidp/actions-semver/fetch-commit-version@7fc07aab64007901329a03b24189b9b52e065efe
+      uses: eidp/actions-semver/fetch-commit-version@70e35f604bad789d4c3f335e4951992ffe10d056
 
     - name: Promote Docker Image
       id: promote-image
