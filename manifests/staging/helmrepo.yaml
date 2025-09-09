@@ -8,6 +8,6 @@ spec:
   interval: 1m
   provider: generic
   secretRef:
-    name: sdp-harbor-credentials
+    name: eidp-harbor-pull-credential
   type: oci
   url: oci://cr.eidp.io/platform-documentation/charts
