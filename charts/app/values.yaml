@@ -6,7 +6,9 @@ image:
   pullPolicy: IfNotPresent
   tag: ""
 
-imagePullSecrets: []
+imagePullSecrets:
+- name: eidp-harbor-docker
+
 nameOverride: ""
 fullnameOverride: ""
 
