@@ -6,6 +6,6 @@ spec:
   interval: 1m
   provider: generic
   secretRef:
-    name: eidp-harbor-pull-credential
+    name: eidp-harbor-docker
   type: oci
   url: oci://cr.eidp.io/platform-documentation/charts
