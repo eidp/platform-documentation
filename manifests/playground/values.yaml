@@ -6,10 +6,10 @@ ingress:
   className: kong
   enabled: true
   hosts:
-  - host: docs.playground.eidp.io
+  - host: docs.playground.eu1.eidp.io
     paths:
     - path: /
       pathType: Prefix
   tls:
   - hosts:
-    - docs.playground.sdp.eidp.io
+    - docs.playground.eu1.eidp.io

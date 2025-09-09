@@ -6,10 +6,10 @@ ingress:
   className: kong
   enabled: true
   hosts:
-  - host: docs.stage.eidp.io
+  - host: docs.stage.eu1.eidp.io
     paths:
     - path: /
       pathType: Prefix
   tls:
   - hosts:
-    - docs.stage.sdp.eidp.io
+    - docs.stage.eu1.eidp.io
