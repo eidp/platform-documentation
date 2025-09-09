@@ -13,3 +13,4 @@ ingress:
   tls:
   - hosts:
     - docs.eidp.com
+    secretName: docs-tls
