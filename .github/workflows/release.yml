@@ -29,7 +29,7 @@ jobs:
         target-tag: '${{ github.ref_name }}'
 
     - name: Helm Promote
-      uses: eidp/actions-helm/promote@7f7f1e8ca220780fa5aa5e4d856e486facad68af
+      uses: eidp/actions-helm/promote@1d05a75f7a7758dd8495bfc4e7b0c7deebc3b6e1 # v0.3.0
       with:
         chart: oci://${{ vars.HARBOR_HOST }}/charts/platform-documentation
         source-version: ${{ steps.fetch-commit-version.outputs.version }}

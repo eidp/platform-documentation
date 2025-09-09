@@ -64,7 +64,7 @@ jobs:
         retention-days: 7
 
     - name: Helm Publish
-      uses: eidp/actions-helm/helm-publish@2c7889e750d48b1e9d282a73ca940171f7d53f27
+      uses: eidp/actions-helm/publish@1d05a75f7a7758dd8495bfc4e7b0c7deebc3b6e1 # v0.3.0
       with:
         chart-path: ./charts/app
         repo-host: oci://${{ vars.HARBOR_HOST }}/charts
