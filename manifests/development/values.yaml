@@ -1,5 +1,6 @@
 ingress:
   annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod-dns
     konghq.com/https-redirect-status-code: "301"
     konghq.com/protocols: https
     konghq.com/strip-path: "false"
