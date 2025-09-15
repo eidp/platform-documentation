@@ -29,7 +29,7 @@ The key pillars of this platform are:
 
 ## Multi‑Tenant Model
 
-Every customer has an isolated control plane and runtime boundary. No runtime resources (clusters, registries, object storage buckets) are shared across tenants.
+Every customer has an isolated control plane and runtime boundary. No runtime resources such as compute instances and data storage are shared across tenants.
 Identity, audit, network ingress, and encryption domains are isolated to enforce hard multi‑tenancy while still enabling rapid upgrades.
 
 ## Need Help?
