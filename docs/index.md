@@ -12,7 +12,7 @@ Welcome to the documentation for the European Internal Developer Platform (EIDP)
 
 EIDP is an Internal Developer Platform delivered as a managed service. It provides an opinionated yet flexible way to ship applications and services with, by giving you a layer of self‑service tooling, infrastructure abstractions, and guardrails. Product teams use this to focus on delivering business value instead of undifferentiated platform plumbing.
 
-Key pillars:
+The key pillars of this platform are:
 
 - Self‑service: standardized golden paths for environments, CI/CD, runtime, and observability.
 - Security & Compliance: baked‑in controls meeting EU regulations and GDPR requirements.
