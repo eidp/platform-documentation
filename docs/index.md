@@ -14,7 +14,7 @@ EIDP is an Internal Developer Platform delivered as a managed service. It provid
 
 The key pillars of this platform are:
 
-- Self‑service: standardized golden paths for environments, CI/CD, runtime, and observability.
+- Out-of-the-box experience: standardized golden paths for environments, CI/CD, runtime, and observability.
 - Security & Compliance: baked‑in controls meeting EU regulations and GDPR requirements.
 - Sovereignty: all data & workloads confined to EU data centers with transparent governance.
 - Scalability: cloud‑native, elastic infrastructure with automated capacity management.
