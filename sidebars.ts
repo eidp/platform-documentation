@@ -12,6 +12,7 @@ const sidebars: SidebarsConfig = {
       label: 'Platform',
       collapsed: false,
       items: [
+        'platform/overview',
         'platform/features',
         'platform/architecture',
         'platform/infrastructure',
