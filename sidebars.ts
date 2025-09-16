@@ -16,7 +16,7 @@ const sidebars: SidebarsConfig = {
         'platform/features',
         'platform/architecture',
         'platform/infrastructure',
-        'platform/security-and-compliance',
+        'platform/security',
       ],
     },
     // {
