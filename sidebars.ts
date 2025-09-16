@@ -31,7 +31,12 @@ const sidebars: SidebarsConfig = {
     {
       type: 'category',
       label: 'CI/CD',
-      items: ['cicd/introduction', 'cicd/github-actions'],
+      items: [
+        'cicd/introduction',
+        'cicd/philosophy',
+        'cicd/supported-platforms',
+        'cicd/github-actions',
+      ],
     },
     // {
     //   type: 'category',

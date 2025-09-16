@@ -11,6 +11,13 @@ EIDP provides standardized GitHub Actions and reusable workflows that can be use
 We have developed several GitHub Actions to facilitate common tasks in CI/CD pipelines. The actions can be found in separate repositories within our GitHub organization.
 The actions are logically grouped by their functionality, such as: Terraform, Kubernetes, Security, and common actions.
 
+The following repositories provide GitHub Actions:
+
+- [Common Actions](https://github.com/eidp/actions-common): Common actions workflow actions for general tasks. These actions are not specific to any technology or platform.
+- [Docker Actions](https://github.com/eidp/actions-docker): Actions for building, pushing and promoting Docker images.
+- [Helm Actions](https://github.com/eidp/actions-helm): Actions for publishing and promoting Helm charts and releases.
+- [Terraform Actions](https://github.com/eidp/actions-terraform): Actions for managing Terraform resources.
+
 A full list of repositories containing GitHub actions can be found in our GitHub organization: [EIDP GitHub Actions](https://github.com/orgs/eidp/repositories?q=github-actions)
 
 Each repository contains a README that contains a list of actions, their usage instructions and examples.

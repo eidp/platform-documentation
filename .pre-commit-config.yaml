@@ -8,6 +8,7 @@ repos:
   - id: check-yaml
     exclude: charts/.*
   - id: check-added-large-files
+    args: ['--maxkb=1256']
 - repo: https://github.com/igorshubovych/markdownlint-cli
   rev: v0.45.0
   hooks:

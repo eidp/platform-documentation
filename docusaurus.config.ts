@@ -55,6 +55,7 @@ const config: Config = {
         languages: ['en'],
       },
     ],
+    'plugin-image-zoom',
   ],
 
   themeConfig: {

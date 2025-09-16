@@ -2,23 +2,15 @@
 sidebar_label: Introduction
 ---
 
-# CI/CD Pipelines
+# CI/CD
 
-EIDP provides standardized pipelines and components that enforce security, quality, and compliance while remaining
-extensible for team-specific needs.
+CI/CD is very important in modern software development.
+At EIDP we believe that a good CI/CD setup is crucial for the success of a project.
+You should invest time and effort into setting up a good CI/CD pipeline that fits your needs.
+It allows teams to deliver software faster and with higher quality by automating the build, test, and deployment processes.
+Hence, our platform provides a set of standardized CI/CD components and pipelines that can be used by you to build high quality CI/CD pipelines with minimal effort.
+These components and pipelines provide a "golden path" that represents best practices for CI/CD.
 
-## Pipeline Stages (Default Golden Path)
+The available pipelines and components enforce security, quality, and compliance while remaining extensible.
 
-| Order | Stage              | Purpose                                      | Failure Effect                 |
-| ----- | ------------------ | -------------------------------------------- | ------------------------------ |
-| 1     | Prepare            | Restore cache, detect language stack         | Blocks subsequent stages       |
-| 2     | Build              | Compile/package container image & Helm chart | Stops pipeline                 |
-| 3     | Test               | Unit + integration tests                     | Failing tests halt promotion   |
-| 4     | Scan               | SCA, image vuln, secrets, IaC policies       | Severity threshold blocks      |
-| 5     | Sign & Attest      | Image signing + SBOM/provenance              | Unsigned images not deployable |
-| 6     | Deploy (dev)       | Apply manifests / GitOps sync                | Deployment not created         |
-| 7     | Post-Deploy Checks | Health, metrics SLO, canary steps            | Rollback / abort promote       |
-
-## Supported CI/CD Systems
-
-Currently, EIDP only provides templates for [GitHub Actions](https://docs.github.com/en/actions) but others are planned (e.g. GitLab CI).
+Before diving into the details of the actual components, we recommend to read the [EIDP CI/CD philosophy](philosophy.md) to get a better understanding of the ideas behind the EIDP CI/CD components and pipelines.

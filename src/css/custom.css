@@ -101,6 +101,10 @@ html[data-theme='dark'] {
   & .footer a:hover {
     color: var(--eidp-color-gold);
   }
+
+  & .medium-zoom-overlay {
+    background: #3a3e45 !important;
+  }
 }
 
 /* Typography */
