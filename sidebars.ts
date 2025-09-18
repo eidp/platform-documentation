@@ -19,15 +19,6 @@ const sidebars: SidebarsConfig = {
         'platform/security',
       ],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Guides',
-    //   collapsed: false,
-    //   items: [
-    //     'guides/getting-started',
-    //     'guides/deploying-first-app'
-    //   ]
-    // },
     {
       type: 'category',
       label: 'CI/CD',
@@ -38,21 +29,6 @@ const sidebars: SidebarsConfig = {
         'cicd/github-actions',
       ],
     },
-    // {
-    //   type: 'category',
-    //   label: 'Operations',
-    //   items: [
-    //     'operations/environments',
-    //     'operations/monitoring-logging'
-    //   ]
-    // },
-    // {
-    //   type: 'category',
-    //   label: 'Reference',
-    //   items: [
-    //     'reference/cli'
-    //   ]
-    // }
   ],
 };
 

@@ -42,7 +42,7 @@ const config: Config = {
         },
         blog: false,
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       } satisfies Preset.Options,
     ],
@@ -55,10 +55,16 @@ const config: Config = {
         languages: ['en'],
       },
     ],
+    'docusaurus-plugin-sass',
     'plugin-image-zoom',
   ],
 
   themeConfig: {
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       logo: {
         alt: 'EIDP Logo',
@@ -85,7 +91,47 @@ const config: Config = {
     },
     footer: {
       style: 'dark',
-      copyright: `Copyright © ${new Date().getFullYear()} EIDP. All rights reserved.`,
+      links: [
+        {
+          items: [
+            {
+              label: 'Github',
+              href: 'https://github.com/eidp',
+              position: 'left',
+              prependBaseUrlToHref: false,
+            },
+            {
+              label: 'Linkedin',
+              href: 'https://www.linkedin.com/company/eidp',
+              prependBaseUrlToHref: false,
+              position: 'left',
+            },
+          ],
+          title: 'Social',
+        },
+        {
+          items: [
+            {
+              label: 'Contact',
+              href: 'https://eidp.com/contact',
+              prependBaseUrlToHref: false,
+            },
+          ],
+          title: 'Resources',
+        },
+        {
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/eidp',
+              prependBaseUrlToHref: false,
+            },
+          ],
+          title: 'Resources',
+        },
+      ],
+      copyright:
+        'Copyright © ' + new Date().getFullYear() + ' EIDP License B.V.',
     },
     prism: {
       theme: prismThemes.github,
