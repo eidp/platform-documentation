@@ -78,7 +78,7 @@ const config: Config = {
           position: 'left',
           label: 'Documentation',
         },
-        { href: 'https://status.eidp.com', label: 'Status', position: 'right' },
+        // { href: 'https://status.eidp.com', label: 'Status', position: 'right' },
         { href: 'https://eidp.com', label: 'eidp.com', position: 'right' },
         { type: 'search', position: 'right' },
         {
