@@ -11,22 +11,24 @@ const sidebars: SidebarsConfig = {
       type: 'category',
       label: 'Platform',
       collapsed: false,
-      items: [
-        'platform/overview',
-        'platform/features',
-        'platform/architecture',
-        'platform/infrastructure',
-        'platform/security',
-      ],
+      items: ['platform/overview', 'platform/features', 'platform/security'],
     },
     {
       type: 'category',
       label: 'CI/CD',
+      collapsed: false,
       items: [
         'cicd/introduction',
         'cicd/philosophy',
-        'cicd/supported-platforms',
-        'cicd/github-actions',
+        {
+          type: 'category',
+          label: 'Supported Platforms',
+          collapsed: true,
+          items: [
+            'cicd/supported-platforms/introduction',
+            'cicd/supported-platforms/github-actions',
+          ],
+        },
       ],
     },
   ],

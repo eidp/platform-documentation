@@ -4,25 +4,24 @@ sidebar_label: Features
 
 # Platform Features
 
-This page provides a capability‑oriented overview of the EIDP platform. Each feature has a short description, primary
-user value, and key security / compliance notes.
+This page provides a capability‑oriented overview of the EIDP platform.
 
 ## Summary
 
-| Feature                         | Description                                                 | Primary Value                | Notes                       |
-| ------------------------------- | ----------------------------------------------------------- | ---------------------------- | --------------------------- |
-| Instance Isolation              | Dedicated control & runtime boundary per customer           | Hard multi‑tenancy           | Separate encryption keys    |
-| Runtime Orchestration           | Managed Kubernetes clusters (per env tier)                  | Elastic scaling & resilience | CIS‑hardened base images    |
-| Container Registry              | Private, per‑instance registry                              | Secure image storage         | Vulnerability scans on push |
-| Template Catalog (planned)      | Curated, opinionated app/service templates                  | Fast bootstrap               | Policy enforced scaffolding |
-| CI Pipelines                    | Pre‑built pipelines & components for build/test/scan/deploy | Reduced setup toil           | Supply‑chain security gates |
-| Secrets Management (planned)    | Encrypted secrets + dynamic credentials                     | Secure config distribution   | KMS + rotation policies     |
-| Observability Stack             | Metrics, logs, traces unified                               | Faster MTTR                  | Default SLO dashboards      |
-| Deployment Strategies (planned) | Rolling, Blue/Green, Canary                                 | Reduced risk releases        | Automated rollback          |
-| Policy Engine                   | Rule based governance                                       | Guardrails & compliance      | Shift‑left enforcement      |
-| Role Based Access Control       | Fine‑grained, instance‑scoped authZ                         | Principle of least privilege | SSO integration             |
-| Audit Logging                   | Immutable event trail                                       | Forensics & compliance       | Tamper‑evident storage      |
-| Cost & Usage Insights (planned) | Resource & spend reports                                    | Optimization & forecasting   | Daily aggregation           |
+| Feature                         | Description                                                 | Category                     |
+| ------------------------------- | ----------------------------------------------------------- |------------------------------|
+| Instance Isolation              | Dedicated control & runtime boundary per customer           | Environment management       |
+| Runtime Orchestration           | Managed Kubernetes clusters (per env tier)                  | Infrastructure orchestration |
+| Container Registry              | Private, per‑instance registry                              | Infrastructure orchestration |
+| Template Catalog (planned)      | Curated, opinionated app/service templates                  | Deployment management        |
+| CI Pipelines                    | Pre‑built pipelines & components for build/test/scan/deploy | Deployment management        |
+| Secrets Management (planned)    | Encrypted secrets + dynamic credentials                     | Configuration management     |
+| Observability Stack             | Metrics, logs, traces unified                               | Infrastructure orchestration |
+| Deployment Strategies (planned) | Rolling, Blue/Green, Canary                                 | Deployment management        |
+| Policy Engine                   | Rule based governance                                       | Infrastructure orchestration |
+| Role Based Access Control       | Fine‑grained, instance‑scoped authZ                         | Role based access control    |
+| Audit Logging                   | Immutable event trail                                       | Infrastructure orchestration |
+| Cost & Usage Insights (planned) | Resource & spend reports                                    | Environment management       |
 
 ## Self‑Service Workflows
 
@@ -41,3 +40,5 @@ scheduled job). They accelerate delivery while maintaining standards for securit
 - Mandatory image provenance attestations.
 - Automated SBOM generation & vulnerability scanning.
 - Continuous configuration drift detection through our GitOps model.
+
+For more details, see [Security](./security.md).

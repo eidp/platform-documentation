@@ -1,5 +1,5 @@
 ---
-sidebar_label: Supported Platforms
+sidebar_label: Introduction
 ---
 
 # Supported Platforms
