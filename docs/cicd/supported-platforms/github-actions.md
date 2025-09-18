@@ -30,4 +30,7 @@ These reusable workflows provide entire workflows that provide the golden path f
 Under the hood, these reusable workflows use the individual actions to perform their tasks.
 The reusable workflows are less flexible and more opinionated than using the individual actions, but they provide a quick way to get started with a best-practice pipeline.
 
-A full list of our reusable workflows can be found in our Actions workflows repository: [EIDP GitHub Actions Workflows](https://github.com/eidp/actions-workflows)
+The following repositories provide reusable workflows:
+
+- [Common Actions](https://github.com/eidp/actions-common): Common workflows for general tasks, like running Renovate.
+- [Terraform Actions](https://github.com/eidp/actions-terraform): Reusable workflows for managing Terraform resources.
