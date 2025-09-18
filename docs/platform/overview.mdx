@@ -10,6 +10,16 @@ We take care of running your apps, so you can focus on delivering products, feat
 
 This document provides an introduction and overview of how our services work.
 
+The picture below shows the main components of the EIDP platform
+
+<ThemedImage
+  alt="EIDP platform overview"
+  sources={{
+    light: useBaseUrl('/img/platform/eidp-components-light.svg'),
+    dark: useBaseUrl('/img/platform/eidp-components-dark.svg'),
+  }}
+/>
+
 ## Running apps in the workload cluster
 
 When you deploy an app or product to EIDP, you do this to a *workload cluster*.
@@ -28,12 +38,12 @@ import ThemedImage from '@theme/ThemedImage';
 
 The workload cluster provides the following services:
 
-* **Load balancing**: making your product or app accessible to the world.
+* **API Gateway / Load balancing**: making your product or app accessible to the world.
 * **Compute**: run any workload that you can package as a container image.
 * **Database**: store relational data in a database, such as a PostgreSQL database.
 * **Storage**: store data on block storage or S3-compatible object storage.
-* **DNS**: automatically manage DNS records for your apps and products.
-* **TLS certificates**: automatically manage TLS certificates for your apps and products.
+* **DNS Management**: automatically manage DNS records for your apps and products.
+* **Certificate management**: automatically manage TLS certificates for your apps and products.
 * **Backups**: automatically back up your data, and restore it when needed.
 * **Logs and metrics**: automatically collect logs and metrics for your apps.
 
@@ -55,7 +65,8 @@ These include viewing logs and metrics in a single place, storing and releasing 
 These facilities are provided in an *infrastructure cluster*.
 
 * **Viewing logs and metrics**: logs and metrics for all workloads are viewable in a single place.
-* **Container & OCI artifact storage**: release and fetch container images & OCI artifacts from a single location.
+* **Dashboards and alerts**: create dashboards and alerts that span multiple workloads or environments.
+* **Container registry / OCI artifact storage**: release and fetch container images & OCI artifacts from a single location.
 * **Shared authentication**: authenticate to internal services using a single set of credentials per user.
 
 <ThemedImage
