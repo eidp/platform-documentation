@@ -43,7 +43,7 @@ The components and pipelines themselves are also treated as code, meaning they a
 
 The standard pipelines provided by EIDP are most effective with the following development workflow in mind:
 
-![Development Workflow](./img/development-workflow.svg)
+![Development Workflow](/img/cicd/development-workflow.svg)
 
 The flow starts with **creating a branch**, then **committing** one or multiple times to this branch when the required changes are made.
 **Pushing to the remote** and creating a (draft) Pull Request or Merge Request should be done when you want to run all automated checks for your branch, usually when you are done or almost done with your changes.
@@ -89,7 +89,7 @@ We distinguish two different pipeline types:
 The image below shows the high-level overview for a CI/CD pipeline for an application.
 Next to building, testing and validating the application, it also includes the application deployment.
 
-![Application pipeline](./img/build-pipelines-application.svg)
+![Application pipeline](/img/cicd/build-pipelines-application.svg)
 
 #### (Feature) branch
 
@@ -115,7 +115,7 @@ The pipeline will essentially retag the Docker image or other artifacts with a v
 
 The image below shows the pipelines for a library or component. Essentially a building block that can be included in other libraries or an application.
 
-![Libsrary / component pipeline](./img/build-pipelines-library-component.svg)
+![Library / component pipeline](/img/cicd/build-pipelines-library-component.svg)
 
 #### (Feature) branch
 
