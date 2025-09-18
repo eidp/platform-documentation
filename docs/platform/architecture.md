@@ -6,7 +6,7 @@ sidebar_label: Architecture
 
 EIDP uses a layered, cloud‑native architecture optimized for instance isolation, scalability, and operability.
 
-An instance (tenant) typically serves one customer and includes multiple environments (dev, test, staging, prod).
+An instance typically serves one customer and includes multiple environments (dev, test, stage, prod).
 Each environment maps to an isolated Kubernetes cluster.
 
 ## High-Level Layers
