@@ -1,5 +1,6 @@
 ---
 sidebar_label: Philosophy
+sidebar_position: 2
 ---
 
 # Philosophy

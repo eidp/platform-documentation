@@ -1,5 +1,6 @@
 ---
 sidebar_label: Features
+sidebar_position: 2
 ---
 
 # Platform Features
