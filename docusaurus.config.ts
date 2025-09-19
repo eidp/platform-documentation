@@ -55,6 +55,7 @@ const config: Config = {
         languages: ['en'],
       },
     ],
+    'docusaurus-plugin-llms',
     'docusaurus-plugin-sass',
     'plugin-image-zoom',
   ],
