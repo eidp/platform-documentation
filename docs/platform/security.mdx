@@ -5,10 +5,34 @@ sidebar_position: 3
 
 # Security
 
-Security is a key pillar of the EIDP stack. This document lays out how we help you achieve security for the applications
+Data protection and operational excellence are key pillars of the EIDP stack, because they are what allows you to keep your data secure. This document lays out how we help you achieve security for the applications
 you run on EIDP, at a technological and process level.
+
 At EIDP, we integrate security by design and work for compliance and regulatory expectations set by ISO27001, SOC2,
 GDPR, and DORA.
+
+## European Data Governance & Sovereignty
+
+When you deploy your services on the EIDP stack, your application and data are completely sovereign within the European Union. This not only means that your data resides in data centers located in the European Union, but that the infrastructure is also owned controlled by companies residing in the European Union.
+
+As a European entity, EIDP designs and develops for compliance within European context first, notably including GDPR, DORA and CRA compliance.
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+<img class="centered" src={useBaseUrl('/img/flag_of_europe.svg')}/>
+
+## Data Isolation & Protection
+
+Each customer instance isolates resources at different levels in the stack, as follows:
+
+| Resource | Isolation                                                                                                                              |
+|----------|----------------------------------------------------------------------------------------------------------------------------------------|
+| Compute  | All customer instances run on separate virtual machines                                                                                |
+| Network  | Network policies and firewalling ensure that cross-instance and cross-cluster communication is impossible or limited to what is needed |
+| Storage  | Buckets and block devices are logically segregated                                                                                     |
+| Backups  | Backups are encrypted with customer unique keys                                                                                        |
+
+Additionally, between different [clusters](./overview), compute and network instances are also logically separated using virtual machines and network polices, where access to storage and backups is protected by access controls.
 
 ## Shared Responsibility
 
@@ -25,20 +49,8 @@ overall security of your product.
 | Secrets                | Encryption, rotation workflows                 | Appropriate scoping & least privilege   |
 | Observability          | Secure log pipeline, retention config          | Redacting sensitive information in logs |
 
-## Data Isolation & Protection
 
-Each customer instance is isolated in the following ways:
-
-| Resource | Isolation                                                                                                                              |
-|----------|----------------------------------------------------------------------------------------------------------------------------------------|
-| Compute  | All customer instances run on separate virtual machines                                                                                |
-| Network  | Network policies and firewalling ensure that cross-instance and cross-cluster communication is impossible or limited to what is needed |
-| Storage  | Buckets and block devices are logically segregated                                                                                     |
-| Backups  | Backups are encrypted with customer unique keys                                                                                        |
-
-Additionally, the EIDP platform enforces the use of TLS 1.3 for incoming connections.
-
-## Security Platform
+## EIDP's Security Platform
 
 The following features of EIDP's platform help secure your apps and services.
 
@@ -81,4 +93,4 @@ soon.
 
 ### Reporting Issues
 
-For security issues, please contact [security@eidp.com](mailto:security@eidp.com).
+To report security issues, please contact [security@eidp.com](mailto:security@eidp.com).
