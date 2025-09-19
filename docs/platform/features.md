@@ -35,7 +35,7 @@ EIDP's infrastructure provides the following resources, based on open source com
 
 ## Security Operations
 
-The EIDP stack provides with secure defaults out of the box, helping you deliver quickly without compromising security. The following defaults are provided:
+The EIDP stack provides secure defaults out of the box, helping you build and run your applications quickly without compromising security. The following defaults are provided:
 
 * Least-privilege segregated network policies between namespaces.
 * Mandatory image provenance attestations.

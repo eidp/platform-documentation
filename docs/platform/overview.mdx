@@ -22,7 +22,7 @@ This document provides an introduction and overview of how our services work.
   <figcaption>The main components of the EIDP platform</figcaption>
 </figure>
 
-## Running apps in the workload cluster
+## Run your apps
 
 When you deploy an app or product to EIDP, you do this to a *workload cluster*.
 The workload cluster is an environment that provides compute resources to run your app, as well as opinionated, golden path resources that apps and products commonly need.
@@ -40,7 +40,7 @@ import ThemedImage from '@theme/ThemedImage';
 
 The workload cluster provides the following resources:
 
-* **API Gateway / Load balancing**: making your product or app accessible to the world.
+* **API Gateway / Load balancer**: making your product or app accessible to the world.
 * **Compute**: run any workload that you can package as a container image.
 * **Database**: store relational data in a database, such as a PostgreSQL database.
 * **Storage**: store data on block storage or S3-compatible object storage.
@@ -49,7 +49,7 @@ The workload cluster provides the following resources:
 * **Backups**: automatically back up your data, and restore it when needed.
 * **Logs and metrics**: automatically collect logs and metrics for your apps.
 
-For each of your apps and products, you can run multiple them in one or more of the available workload clusters that serve as environments, such as development, test, and production.
+For each of your apps and products, you can run multiple instances of them in one or more of the available workload clusters that serve as environments, such as development, test, and production.
 
 <ThemedImage
   alt="Workload cluster"
