@@ -38,13 +38,13 @@ import ThemedImage from '@theme/ThemedImage';
   }}
 />
 
-The workload cluster provides the following services:
+The workload cluster provides the following resources:
 
 * **API Gateway / Load balancing**: making your product or app accessible to the world.
 * **Compute**: run any workload that you can package as a container image.
 * **Database**: store relational data in a database, such as a PostgreSQL database.
 * **Storage**: store data on block storage or S3-compatible object storage.
-* **DNS Management**: automatically manage DNS records for your apps and products.
+* **DNS management**: automatically manage DNS records for your apps and products.
 * **Certificate management**: automatically manage TLS certificates for your apps and products.
 * **Backups**: automatically back up your data, and restore it when needed.
 * **Logs and metrics**: automatically collect logs and metrics for your apps.
@@ -62,13 +62,13 @@ For each of your apps and products, you can run multiple them in one or more of 
 
 ## Common facilities for workloads - the infrastructure cluster
 
-When working with various workloads, typically there are a few support processes that you'd like to have shared across workloads.
-These include viewing logs and metrics in a single place, storing and releasing container images for workloads, and sharing authentication information across environments.
+When working with one or multiple products, typically there are a few support processes that you'd like to have shared across them.
+For example, you'd like to view logs and metrics in a single place, store and release container images for workloads, and share authentication information across environments.
 These facilities are provided in an *infrastructure cluster*.
 
 * **Viewing logs and metrics**: logs and metrics for all workloads are viewable in a single place.
 * **Dashboards and alerts**: create dashboards and alerts that span multiple workloads or environments.
-* **Container registry / OCI artifact storage**: release and fetch container images & OCI artifacts from a single location.
+* **Container registry / OCI artifact storage**: release and fetch container images and other OCI artifacts from a single location.
 * **Shared authentication**: authenticate to internal services using a single set of credentials per user.
 
 <ThemedImage
@@ -81,7 +81,8 @@ These facilities are provided in an *infrastructure cluster*.
 
 ## Developing and releasing
 
-EIDP integrates with your existing code and CI/CD platform.
+EIDP is designed to integrate with your existing code and CI/CD platform, so you can test and release from the place you're already developing.
+
 We provide standardized, reusable actions and scripts to release new versions of your apps to the EIDP platform.
 Your CI/CD systems connect with your *workload clusters*, in order to manage the apps running in your workload clusters.
 For this we are using GitOps principles, where the desired state of your apps is stored in a Git repository, and the workload cluster automatically reconciles the actual state to match the desired state.
