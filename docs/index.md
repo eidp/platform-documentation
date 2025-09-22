@@ -13,7 +13,7 @@ documentation explains how.
 
 ## What is EIDP?
 
-EIDP is an Internal Developer Platform delivered as a managed service. It provides an opinionated yet flexible way to
+EIDP is an [Internal Developer Platform](./concepts/internal-developer-platform) delivered as a managed service. It provides an opinionated yet flexible way to
 ship applications and services, by giving you a layer of self‑service tooling, infrastructure abstractions, and
 guardrails. Product teams use this to focus on delivering business value instead of spending time on undifferentiated
 platform plumbing.
