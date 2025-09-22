@@ -1,9 +1,9 @@
 ---
-sidebar_label: Features & Components
+sidebar_label: Features & components
 sidebar_position: 2
 ---
 
-# Features & Components
+# Features & components
 
 As explained in [the platform overview](./overview), EIDP provides a complete developer platform.
 This page summarizes the features and components of this platform.
@@ -43,7 +43,7 @@ EIDP's infrastructure provides the following resources, based on open source com
 | **Deployment templates** | Quickly spin up additional apps and infrastructure | EIDP provided |
 | **Secrets management** (planned) | Securely manage secrets used to run and deploy your app | OpenBao |
 
-## Security Operations
+## Security operations
 
 The EIDP stack provides secure defaults out of the box, helping you build and run your applications quickly without compromising security. The following defaults are provided:
 

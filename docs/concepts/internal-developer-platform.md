@@ -3,14 +3,14 @@ sidebar_label: What is an IDP?
 sidebar_position: 1
 ---
 
-# What is an Internal Developer Platform?
+# What is an internal developer platform?
 
 An Internal Developer Platform (IDP) is a curated collection of tools, services, and infrastructure that enables
 development teams to efficiently build, deploy, and manage software applications.
 It provides standardized, self-service capabilities that abstract away infrastructure complexity while maintaining
 flexibility for developers.
 
-## Core Purpose
+## Core purpose
 
 IDPs address a fundamental challenge in modern software development: the growing complexity of infrastructure and
 operational requirements.
@@ -23,7 +23,7 @@ An IDP solves this by providing:
 * **Abstraction of complexity**: hiding infrastructure details while maintaining necessary control.
 * **Golden paths**: opinionated, best-practice workflows that guide developers toward success.
 
-## Key Components
+## Key components
 
 A well-designed Internal Developer Platform typically includes:
 
@@ -36,19 +36,19 @@ A well-designed Internal Developer Platform typically includes:
 | **Observability**                        | Monitor application health, logs, and metrics                 | Prometheus, Grafana               |
 | **Security & Compliance**                | Enforce policies and manage secrets                           | OPA, Vault                        |
 
-## Benefits for Organizations
+## Benefits for organizations
 
-### Improved Developer Experience
+### Improved developer experience
 
 Developers focus on writing code rather than wrestling with infrastructure.
 Self-service capabilities reduce dependencies on operations teams, accelerating development cycles.
 
-### Increased Efficiency
+### Increased efficiency
 
 Standardized workflows reduce duplication of effort.
 Teams leverage shared components and best practices rather than reinventing solutions.
 
-### Enhanced Reliability
+### Enhanced reliability
 
 Consistent deployment processes reduce human error.
 Built-in observability and security controls improve overall system reliability.
@@ -58,7 +58,7 @@ Built-in observability and security controls improve overall system reliability.
 Platform teams can support many more development teams by providing self-service capabilities rather than handling
 individual requests.
 
-## IDP vs Traditional Approaches
+## IDP vs traditional approaches
 
 Traditional infrastructure management often involves:
 
@@ -72,7 +72,7 @@ An IDP transforms this by:
 * Enabling self-service capabilities
 * Centralizing solutions to common challenges
 
-## How EIDP Implements IDP Principles
+## How EIDP implements IDP principles
 
 EIDP embodies these IDP principles by providing:
 

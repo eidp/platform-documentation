@@ -12,7 +12,7 @@ Understanding this philosophy will help you to make the best use of them.
 Furthermore, it is important to understand that these are guidelines and best practices, and not hard rules.
 However, you are encouraged to follow them as they follow the industry best practices to ensure a high-quality software development process.
 
-## Key Principles
+## Key principles
 
 The EIDP CI/CD components and pipelines are built upon a few principles, that are outlined below.
 

@@ -5,7 +5,7 @@ sidebar_position: 1
 slug: /
 ---
 
-# EIDP Platform Documentation
+# EIDP platform documentation
 
 Welcome to the documentation for the European Internal Developer Platform (EIDP). EIDP helps you ship the products and
 services you develop, by handling reliability, performance, security, and European data sovereignty for you. This
@@ -26,7 +26,7 @@ The platform is built on the following pillars:
 - **Operational excellence**: run your product with identity management, security patching, and monitoring facilities.
 - **Data protection**: environments run using compute, network and storage resources that are isolated and protected.
 
-## Documentation Map
+## Documentation map
 
 | Area     | Purpose                                                             |
 |----------|---------------------------------------------------------------------|

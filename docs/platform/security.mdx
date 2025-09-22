@@ -11,7 +11,7 @@ you run on EIDP, at a technological and process level.
 At EIDP, we integrate security by design and work for compliance and regulatory expectations set by ISO27001, SOC2,
 GDPR, and DORA.
 
-## European Data Governance & Sovereignty
+## European data governance & sovereignty
 
 When you deploy your services on the EIDP stack, your application and data are completely sovereign within the European Union. This not only means that your data resides in data centers located in the European Union, but that the infrastructure is also owned and controlled by companies residing in the European Union.
 
@@ -21,7 +21,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 <img class="centered" src={useBaseUrl('/img/flag_of_europe.svg')}/>
 
-## Data Isolation & Protection
+## Data isolation & protection
 
 Each customer instance isolates resources at different levels in the stack, as follows:
 
@@ -34,7 +34,7 @@ Each customer instance isolates resources at different levels in the stack, as f
 
 Additionally, between different [clusters](./overview), compute and network instances are also logically separated using virtual machines and network polices, where access to storage and backups is protected by access controls.
 
-## Shared Responsibility
+## Shared responsibility
 
 You run your own applications and code on the EIDP stack, which means you and EIDP have shared responsibility for the
 overall security of your product.
@@ -50,17 +50,17 @@ overall security of your product.
 | Observability          | Secure log pipeline, retention config          | Redacting sensitive information in logs |
 
 
-## EIDP's Security Platform
+## EIDP's security platform
 
 The following features of EIDP's platform help secure your apps and services.
 
-### Identity & Access Management
+### Identity & access management
 
 EIDP permits customers to extend their own identity provider (IDP) into their EIDP instances through SAML or OIDC.
 Within instances, customers can choose role-based access models for accessing EIDP platform services such as logs,
 backups, and databases.
 
-### Supply Chain Security
+### Supply chain security
 
 The EIDP platform has built-in support for solving common supply chain security issues during development.
 
@@ -71,13 +71,13 @@ The EIDP platform has built-in support for solving common supply chain security 
 | Sign   | Image signing + provenance attestation (SLSA level target)            |
 | Deploy | Policy engine validates signature + allowed base images (optional)    |
 
-### Logging & Audit
+### Logging & audit
 
 Apps deployed in EIDP workload clusters automatically log to a separate, append-only logging instance. These logs
 include application logs as well as information about deployments, role usage, and working with sensitive credentials.
 This data can be exported to other sources such as webhook collectors or SIEMs.
 
-## Process & Policy
+## Process & policy
 
 ### Compliance
 
@@ -91,6 +91,6 @@ The following artifacts are available to customers in the support portal:
 EIDP organizes internal processes around ISO27001, SOC2, and DORA standards and hopes to demonstrate compliance to these
 soon.
 
-### Reporting Issues
+### Reporting issues
 
 To report security issues, please contact [security@eidp.com](mailto:security@eidp.com).
