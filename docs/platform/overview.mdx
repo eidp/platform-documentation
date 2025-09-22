@@ -5,11 +5,15 @@ sidebar_position: 1
 
 # EIDP Platform Overview
 
-EIDP delivers a complete *developer platform* for running your applications.
+EIDP delivers a complete *(internal) developer platform* for running your applications.
 This developer platform provides and automates the common infrastructure needs for your product.
-We take care of running your apps, so you can focus on delivering products, features, and code.
+We make running your apps as easy as possible, so you can focus on delivering products, features, and code.
+For more information on what an internal developer platform is, see [What is an Internal Developer Platform?](https://internaldeveloperplatform.org/what-is-an-internal-developer-platform/)
 
 This document provides an introduction and overview of how our services work.
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
 
 <figure>
   <ThemedImage
@@ -27,16 +31,16 @@ This document provides an introduction and overview of how our services work.
 When you deploy an app or product to EIDP, you do this to a *workload cluster*.
 The workload cluster is an environment that provides compute resources to run your app, as well as opinionated, golden path resources that apps and products commonly need.
 
-import useBaseUrl from '@docusaurus/useBaseUrl';
-import ThemedImage from '@theme/ThemedImage';
-
-<ThemedImage
-  alt="Workload cluster"
-  sources={{
-    light: useBaseUrl('/img/platform/workload-cluster-light.svg'),
-    dark: useBaseUrl('/img/platform/workload-cluster-dark.svg'),
-  }}
-/>
+<figure>
+  <ThemedImage
+    alt="Workload cluster"
+    sources={{
+      light: useBaseUrl('/img/platform/workload-cluster-light.svg'),
+      dark: useBaseUrl('/img/platform/workload-cluster-dark.svg'),
+    }}
+  />
+  <figcaption>A workload cluster resembling an environment, providing resources for your apps and products</figcaption>
+</figure>
 
 The workload cluster provides the following resources:
 
@@ -51,14 +55,16 @@ The workload cluster provides the following resources:
 
 For each of your apps and products, you can run multiple instances of them in one or more of the available workload clusters that serve as environments, such as development, test, and production.
 
-<ThemedImage
-  alt="Workload cluster"
-  sources={{
-    light: useBaseUrl('/img/platform/app-deployments-light.svg'),
-    dark: useBaseUrl('/img/platform/app-deployments-dark.svg'),
-  }}
-/>
-
+<figure>
+  <ThemedImage
+    alt="Workload cluster"
+    sources={{
+      light: useBaseUrl('/img/platform/app-deployments-light.svg'),
+      dark: useBaseUrl('/img/platform/app-deployments-dark.svg'),
+    }}
+  />
+  <figcaption>A single app running in multiple environments</figcaption>
+</figure>
 
 ## Common facilities for workloads - the infrastructure cluster
 
@@ -71,13 +77,16 @@ These facilities are provided in an *infrastructure cluster*.
 * **Container registry / OCI artifact storage**: release and fetch container images and other OCI artifacts from a single location.
 * **Shared authentication**: authenticate to internal services using a single set of credentials per user.
 
-<ThemedImage
-  alt="Workload cluster"
-  sources={{
-    light: useBaseUrl('/img/platform/infrastructure-cluster-light.svg'),
-    dark: useBaseUrl('/img/platform/infrastructure-cluster-dark.svg'),
-  }}
-/>
+<figure>
+  <ThemedImage
+    alt="Workload cluster"
+    sources={{
+      light: useBaseUrl('/img/platform/infrastructure-cluster-light.svg'),
+      dark: useBaseUrl('/img/platform/infrastructure-cluster-dark.svg'),
+    }}
+  />
+  <figcaption>The infrastructure cluster providing common facilities</figcaption>
+</figure>
 
 ## Developing and releasing
 
