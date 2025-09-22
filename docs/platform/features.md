@@ -8,10 +8,20 @@ sidebar_position: 2
 As explained in [the platform overview](./overview), EIDP provides a complete developer platform.
 This page summarizes the features and components of this platform.
 
-## EIDP accounts
+## EIDP instances
 
-EIDP customers can set up accounts for one or multiple products they launch on EIDP. EIDP accounts are
-logically segregated from one another at the account level, and have their own billing details and overview. Customers can create multiple accounts for separate logical collections of apps and products.
+As EIDP customer, you can set up one or multiple instances of our platform.
+On a single instance you can run as many applications or products as you want.
+EIDP instances are logically segregated from one another at the instance level, and have their own billing details and overview.
+You can create multiple instances for separate logical collections of apps and products.
+However, each instance is a separate platform, and does not share any resources with other instances.
+This means that there is quite some overhead in setting up a new instance.
+Hence, we recommend to only set up a new instance when you have a clear reason to do so, such as:
+
+* Separate billing or organisational reasons.
+* Separate data residency or compliance requirements.
+* Separate network connectivity requirements.
+* Separate security or operational requirements.
 
 ## Infrastructure
 
