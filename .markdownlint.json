@@ -1,5 +1,5 @@
 {
-  "default": true,
-  "MD013": false,
+  "extends": "markdownlint/style/prettier",
+  "no-inline-html": false,
   "MD024": false
 }
