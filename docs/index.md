@@ -20,11 +20,11 @@ platform plumbing.
 
 The platform is built on the following pillars:
 
-- **Great out-of-the-box experience**: standardized golden paths for environments, CI/CD, runtime, and observability.
-- **Sovereignty**: all data & workloads are run in data centers within the European Union, run by European owners.
+- **Great out-of-the-box experience**: standardised golden paths for environments, CI/CD, runtime, and observability.
+- **Sovereignty**: all data & workloads are run in data centres within the European Union, run by European owners.
 - **Scalability**: cloud‑native, elastic infrastructure with automated capacity management.
 - **Operational excellence**: run your product with identity management, security patching, and monitoring facilities.
-- **Data protection**: environments run using compute, network and storage resources that are isolated and protected.
+- **Data protection**: environments run using compute, network, and storage resources that are isolated and protected.
 
 ## Documentation map
 

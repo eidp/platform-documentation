@@ -5,7 +5,7 @@ sidebar_position: 1
 
 # Supported platforms
 
-Every source code platform has it's own CI/CD system with it's own strengths and weaknesses.
+Every source code platform has its own CI/CD system with its own strengths and weaknesses.
 The EIDP platform currently supports the following platforms:
 
 | Platform | CI/CD System                                         | Status          | Notes          |

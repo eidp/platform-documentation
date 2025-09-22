@@ -6,7 +6,7 @@ sidebar_position: 2
 # Features & components
 
 As explained in [the platform overview](./overview), EIDP provides a complete developer platform.
-This page summarizes the features and components of this platform.
+This page summarises the features and components of this platform.
 
 ## EIDP instances
 

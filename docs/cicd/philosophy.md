@@ -6,7 +6,7 @@ sidebar_position: 2
 # Philosophy
 
 The EIDP platform provides a set of best practices and guidelines for setting up CI/CD pipelines.
-The goal is to provide a consistent, reliable and secure way to deploy your applications.
+The goal is to provide a consistent, reliable, and secure way to deploy your applications.
 This guide provides the philosophy behind the EIDP CI/CD components and pipelines.
 Understanding this philosophy will help you to make the best use of them.
 Furthermore, it is important to understand that these are guidelines and best practices, and not hard rules.
@@ -25,7 +25,7 @@ This automation extends from the earliest stages of development through to produ
 ### Consistency
 
 Consistency across pipelines for all teams and projects using them form another critical pillar of our philosophy.
-We establish standardized processes, tooling, and methodologies that create a unified experience regardless of the specific project or team involved.
+We establish standardised processes, tooling, and methodologies that create a unified experience regardless of the specific project or team involved.
 This consistency not only reduces the learning curve for developers moving between projects but also ensures predictable outcomes and simplifies maintenance and troubleshooting across your entire software ecosystem.
 
 ### Security
@@ -89,7 +89,7 @@ We distinguish two different pipeline types:
 ### Application pipeline
 
 The image below shows the high-level overview for a CI/CD pipeline for an application.
-Next to building, testing and validating the application, it also includes the application deployment.
+Next to building, testing, and validating the application, it also includes the application deployment.
 
 ![Application pipeline](/img/cicd/build-pipelines-application.svg)
 

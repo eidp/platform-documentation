@@ -7,19 +7,19 @@ sidebar_position: 1
 
 An Internal Developer Platform (IDP) is a curated collection of tools, services, and infrastructure that enables
 development teams to efficiently build, deploy, and manage software applications.
-It provides standardized, self-service capabilities that abstract away infrastructure complexity while maintaining
+It provides standardised, self-service capabilities that abstract away infrastructure complexity while maintaining
 flexibility for developers.
 
 ## Core purpose
 
 IDPs address a fundamental challenge in modern software development: the growing complexity of infrastructure and
 operational requirements.
-As organizations scale, development teams often spend significant time managing infrastructure rather than delivering
+As organisations scale, development teams often spend significant time managing infrastructure rather than delivering
 business value.
 An IDP solves this by providing:
 
 * **Self-service infrastructure**: developers can provision resources without waiting for operations teams.
-* **Standardized workflows**: consistent processes for building, testing, and deploying applications.
+* **Standardised workflows**: consistent processes for building, testing, and deploying applications.
 * **Abstraction of complexity**: hiding infrastructure details while maintaining necessary control.
 * **Golden paths**: opinionated, best-practice workflows that guide developers toward success.
 
@@ -36,7 +36,7 @@ A well-designed Internal Developer Platform typically includes:
 | **Observability**                        | Monitor application health, logs, and metrics                 | Prometheus, Grafana               |
 | **Security & Compliance**                | Enforce policies and manage secrets                           | OPA, Vault                        |
 
-## Benefits for organizations
+## Benefits for organisations
 
 ### Improved developer experience
 
@@ -45,7 +45,7 @@ Self-service capabilities reduce dependencies on operations teams, accelerating 
 
 ### Increased efficiency
 
-Standardized workflows reduce duplication of effort.
+Standardised workflows reduce duplication of effort.
 Teams leverage shared components and best practices rather than reinventing solutions.
 
 ### Enhanced reliability
@@ -78,7 +78,7 @@ EIDP embodies these IDP principles by providing:
 
 * **Managed platform services**: we handle the platform complexity so you can focus on your applications
 * **European sovereignty**: all infrastructure runs in EU data centers with European ownership
-* **Golden paths**: standardized CI/CD pipelines and deployment patterns
+* **Golden paths**: standardised CI/CD pipelines and deployment patterns
 * **Self-service capabilities**: provision environments and resources through automated workflows
 * **Built-in operational excellence**: monitoring, security, and compliance features included by default
 
