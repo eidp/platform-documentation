@@ -32,3 +32,4 @@ The platform is built on the following pillars:
 |----------|---------------------------------------------------------------------|
 | Platform | Concepts & capabilities (features, architecture, infra, security)   |
 | CICD     | Explanation about the provided CI/CD components and how to use them |
+| Concepts | Explanation of concepts used within EIDP                            |
