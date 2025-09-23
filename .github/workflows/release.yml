@@ -20,6 +20,8 @@ jobs:
     - name: Fetch commit version
       id: fetch-commit-version
       uses: eidp/actions-semver/fetch-commit-version@9e980f27193f56c7d03142145c4939d571e264e3 # v0.2.0
+      with:
+        workflow-name: build
 
     - name: Promote Docker Image
       id: promote-image
