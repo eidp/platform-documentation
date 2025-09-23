@@ -1,0 +1,142 @@
+/* Custom EIDP Documentation Theme Overrides */
+
+:root {
+  /* Brand Palette */
+  --eidp-color-base-dark: #2b2e34; /* primary heading */
+  --eidp-color-text: #2b2e34; /* body text */
+  --eidp-color-blue: #0067b2;
+  --eidp-color-brown: #9a6148;
+  --eidp-color-gold: #dac662;
+  --eidp-color-muted-green: #9db6a9;
+  --eidp-color-gray-mid: #707070;
+  --eidp-color-gray-light: #f4f4f4;
+
+  /* Map to Docusaurus tokens */
+  --ifm-color-primary: var(--eidp-color-blue);
+  --ifm-color-primary-dark: #005da0;
+  --ifm-color-primary-darker: #005897;
+  --ifm-color-primary-darkest: #00487d;
+  --ifm-color-primary-light: #0071c4;
+  --ifm-color-primary-lighter: #0076cd;
+  --ifm-color-primary-lightest: #0079d0;
+  --ifm-font-family-monospace: 'Fira Code', monospace;
+  --ifm-font-family-base:
+    'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    Arial, sans-serif;
+  --ifm-heading-font-family: 'Inter', var(--ifm-font-family-base);
+  --ifm-line-height-base: 1.55;
+  --ifm-code-font-size: 0.85rem;
+}
+
+/* Dark Theme Styles */
+html[data-theme='dark'] {
+  /* Color Variables */
+  --ifm-color-primary: #3c96d6;
+  --ifm-color-primary-dark: #2b89cc;
+  --ifm-color-primary-darker: #2a87c9;
+  --ifm-color-primary-darkest: #2a87c9;
+  --ifm-color-primary-light: #53a2db;
+  --ifm-color-primary-lighter: #5ea8dd;
+  --ifm-color-primary-lightest: #80bbe4;
+
+  --ifm-background-color: #2b2e34;
+  --ifm-background-surface-color: #2f3238; /* slightly lighter surface for contrast */
+  --ifm-navbar-background-color: #2f3238;
+  --ifm-navbar-link-color: var(--eidp-color-text);
+  --ifm-link-color: #3c96d6;
+  --ifm-link-hover-color: #dac662;
+  --eidp-color-text: #c9ccd2;
+  --eidp-color-heading-dark: #ffffff; /* new var for headings in dark */
+  --ifm-code-background: #1f2227;
+  --ifm-table-stripe-background: #2f3238;
+  --ifm-toc-border-color: #3d4046;
+
+  /* Typography */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--eidp-color-heading-dark) !important;
+  }
+
+  .markdown h2 {
+    border-top: 1px solid #3d4046;
+  }
+
+  body,
+  .markdown p {
+    color: var(--eidp-color-text);
+  }
+
+  /* Code blocks & inline code */
+  .theme-code-block {
+    background: #1f2227;
+    border: 1px solid #3a3e45;
+  }
+
+  .markdown code {
+    background: #1f2227;
+    color: #e2e6eb;
+  }
+
+  /* Tables */
+  .markdown table thead tr {
+    background: #34373d;
+  }
+
+  .markdown table th,
+  .markdown table td {
+    border: 1px solid #3d4046;
+  }
+
+  /* Image zoom overlay */
+  .medium-zoom-overlay {
+    background: #3a3e45 !important;
+  }
+}
+
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+/* Links */
+.markdown a {
+  font-weight: 500;
+}
+.markdown a:hover {
+  text-decoration: none;
+}
+
+/* Footer */
+.footer {
+  font-size: 0.85rem;
+}
+.footer a:hover {
+  color: var(--eidp-color-gold);
+}
+
+/* Figure captions */
+figcaption {
+  text-align: center;
+  font-style: italic;
+  color: var(--eidp-color-gray-mid);
+  font-size: 0.9rem;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 996px) {
+  .markdown h1 {
+    font-size: 2rem;
+  }
+  .navbar__items {
+    font-size: 0.95rem;
+  }
+}
+
+img.centered {
+  display: block;
+  margin: auto;
+  width: 50%;
+}

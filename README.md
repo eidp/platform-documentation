@@ -1,2 +1,74 @@
-# platform-documentation
-EIDP Platform documentation
+# EIDP Platform Documentation
+
+This repo contains the Customer‑facing documentation for the EIDP platform.
+
+## Tech Stack
+
+- Framework: Docusaurus 3 (classic preset)
+- Language: Markdown/MDX, TypeScript
+- Styling: Custom CSS overrides in `src/css/custom.css`
+- i18n: English
+
+## Development
+
+Requirements: Node.js 20+ (LTS), npm.
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start dev server (hot reload):
+
+```bash
+npm start
+```
+
+Build production bundle:
+
+```bash
+npm run build
+```
+
+Serve built site locally (to test prod output):
+
+```bash
+npm run serve
+```
+
+### Authoring Guidelines
+
+- Prefer concise, task‑oriented language.
+- Use tables for capability matrices & comparisons.
+- For commands: fenced code blocks, single command per line.
+
+### Writing Style
+
+The documentation follows UK English conventions:
+
+- **Spelling**: Use UK English spelling (e.g., "organisation" not "organization", "centre" not "center", "standardised" not "standardized")
+- **Grammar**: Use Oxford commas for clarity in lists (e.g., "compute, network, and storage")
+- **Capitalisation**: Use sentence case for headings (e.g., "What is an IDP?" not "What Is An IDP?")
+- **Tone**: Professional and technical, targeting developers and architects
+
+### Adding a New Doc
+
+1. Create file under appropriate folder in `docs/`.
+2. Set `sidebar_position` in frontmatter.
+3. Run `npm start` and verify navigation + no broken links.
+
+### Link Conventions
+
+Use relative links (e.g. `../platform/features`) so they work across locales.
+Avoid hardcoding domain URLs unless external.
+
+### Pre-commit hooks
+
+To ensure code quality and consistency, this repository uses [pre-commit](https://pre-commit.com/) hooks.
+Make sure to
+install the pre-commit hooks by running:
+
+```bash
+pre-commit install
+```

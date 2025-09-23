@@ -1,0 +1,101 @@
+---
+sidebar_label: Overview
+sidebar_position: 1
+---
+
+# EIDP platform overview
+
+EIDP delivers a complete *(internal) developer platform* for running your applications.
+This developer platform provides and automates the common infrastructure needs for your product.
+We make running your apps as easy as possible, so you can focus on delivering products, features, and code.
+For more information on what an internal developer platform is, see [What is an Internal Developer Platform?](../concepts/internal-developer-platform)
+
+This document provides an introduction and overview of how our services work.
+
+import useBaseUrl from '@docusaurus/useBaseUrl';
+import ThemedImage from '@theme/ThemedImage';
+
+<figure>
+  <ThemedImage
+    alt="EIDP platform overview"
+    sources={{
+      light: useBaseUrl('/img/platform/eidp-components-light.svg'),
+      dark: useBaseUrl('/img/platform/eidp-components-dark.svg'),
+    }}
+  />
+  <figcaption>The main components of the EIDP platform</figcaption>
+</figure>
+
+## Run your apps
+
+When you deploy an app or product to EIDP, you do this to a *workload cluster*.
+The workload cluster is an environment that provides compute resources to run your app, as well as opinionated, golden path resources that apps and products commonly need.
+
+<figure>
+  <ThemedImage
+    alt="Workload cluster"
+    sources={{
+      light: useBaseUrl('/img/platform/workload-cluster-light.svg'),
+      dark: useBaseUrl('/img/platform/workload-cluster-dark.svg'),
+    }}
+  />
+  <figcaption>A workload cluster resembling an environment, providing resources for your apps and products</figcaption>
+</figure>
+
+The workload cluster provides the following resources:
+
+* **API Gateway / Load balancer**: making your product or app accessible to the world.
+* **Compute**: run any workload that you can package as a container image.
+* **Database**: store relational data in a database, such as a PostgreSQL database.
+* **Storage**: store data on block storage or S3-compatible object storage.
+* **DNS management**: automatically manage DNS records for your apps and products.
+* **Certificate management**: automatically manage TLS certificates for your apps and products.
+* **Backups**: automatically back up your data, and restore it when needed.
+* **Logs and metrics**: automatically collect logs and metrics for your apps.
+
+For each of your apps and products, you can run multiple instances of them in one or more of the available workload clusters that serve as environments, such as development, test, and production.
+
+<figure>
+  <ThemedImage
+    alt="Workload cluster"
+    sources={{
+      light: useBaseUrl('/img/platform/app-deployments-light.svg'),
+      dark: useBaseUrl('/img/platform/app-deployments-dark.svg'),
+    }}
+  />
+  <figcaption>A single app running in multiple environments</figcaption>
+</figure>
+
+## Common facilities for workloads - the infrastructure cluster
+
+When working with one or multiple products, typically there are a few support processes that you'd like to have shared across them.
+For example, you'd like to view logs and metrics in a single place, store and release container images for workloads, and share authentication information across environments.
+These facilities are provided in an *infrastructure cluster*.
+
+* **Viewing logs and metrics**: logs and metrics for all workloads are viewable in a single place.
+* **Dashboards and alerts**: create dashboards and alerts that span multiple workloads or environments.
+* **Container registry / OCI artifact storage**: release and fetch container images and other OCI artifacts from a single location.
+* **Shared authentication**: authenticate to internal services using a single set of credentials per user.
+
+<figure>
+  <ThemedImage
+    alt="Workload cluster"
+    sources={{
+      light: useBaseUrl('/img/platform/infrastructure-cluster-light.svg'),
+      dark: useBaseUrl('/img/platform/infrastructure-cluster-dark.svg'),
+    }}
+  />
+  <figcaption>The infrastructure cluster providing common facilities</figcaption>
+</figure>
+
+## Developing and releasing
+
+EIDP is designed to integrate with your existing code and CI/CD platform, so you can test and release from the place you're already developing.
+
+We provide standardised, reusable actions and scripts to release new versions of your apps to the EIDP platform.
+Your CI/CD systems connect with your *workload clusters*, in order to manage the apps running in your workload clusters.
+For this we are using GitOps principles, where the desired state of your apps is stored in a Git repository, and the workload cluster automatically reconciles the actual state to match the desired state.
+
+At the moment, EIDP supports GitHub Actions.
+See the [CI/CD documentation](../cicd/introduction.md) section for more information on CI/CD with EIDP.
+Support for other CI/CD systems is planned.

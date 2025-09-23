@@ -1,0 +1,10 @@
+# Node / Docusaurus
+node_modules/
+.docusaurus/
+build/
+.env.local
+npm-debug.log*
+yarn-error.log
+.DS_Store
+.idea/
+

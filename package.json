@@ -1,0 +1,60 @@
+{
+  "name": "platform-documentation",
+  "private": true,
+  "version": "0.1.0",
+  "description": "EIDP Internal Developer Platform documentation site (customer-facing)",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "serve": "docusaurus serve",
+    "clear": "docusaurus clear",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css}\"",
+    "lint:md": "markdownlint \"docs/**/*.md\" \"docs/**/*.mdx\" \"*.md\" --rules sentences-per-line",
+    "lint:md:fix": "markdownlint \"docs/**/*.md\" \"docs/**/*.mdx\" \"*.md\" --rules sentences-per-line --fix",
+    "prepare": "if test -z \"$CI\" ; then pre-commit install ; fi"
+  },
+  "dependencies": {
+    "@docusaurus/core": "^3.8.1",
+    "@docusaurus/preset-classic": "^3.8.1",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.1.0",
+    "docusaurus-lunr-search": "^3.6.0",
+    "plugin-image-zoom": "^1.2.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "3.8.1",
+    "@docusaurus/tsconfig": "3.8.1",
+    "@docusaurus/types": "3.8.1",
+    "docusaurus-plugin-llms": "^0.2.2",
+    "docusaurus-plugin-sass": "^0.2.6",
+    "markdownlint-cli": "^0.45.0",
+    "prettier": "^3.6.2",
+    "sass": "^1.92.1",
+    "sentences-per-line": "^0.3.0",
+    "typescript": "~5.6.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  }
+}

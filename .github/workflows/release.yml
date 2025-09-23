@@ -1,0 +1,41 @@
+name: release
+
+on:
+  push:
+    tags:
+    - '*.*.*'
+
+jobs:
+  release:
+    runs-on: kubernetes-runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5.0.0
+
+    - name: Fetch commit version
+      id: fetch-commit-version
+      uses: eidp/actions-semver/fetch-commit-version@9e980f27193f56c7d03142145c4939d571e264e3 # v0.2.0
+
+    - name: Promote Docker Image
+      id: promote-image
+      uses: eidp/actions-docker/promote@a2fa805dfce694d5c24b208331f61d3bd71128d2 # v0.1.0
+      with:
+        image: ${{ vars.HARBOR_HOST }}/platform-documentation
+        registry: ${{ vars.HARBOR_HOST }}
+        registry-username: ${{ secrets.HARBOR_USERNAME }}
+        registry-password: ${{ secrets.HARBOR_PASSWORD }}
+        source-tag: ${{ steps.fetch-commit-version.outputs.version }}
+        target-tag: '${{ github.ref_name }}'
+
+    - name: Helm Promote
+      uses: eidp/actions-helm/promote@1d05a75f7a7758dd8495bfc4e7b0c7deebc3b6e1 # v0.3.0
+      with:
+        chart: oci://${{ vars.HARBOR_HOST }}/charts/platform-documentation
+        source-version: ${{ steps.fetch-commit-version.outputs.version }}
+        target-version: '${{ github.ref_name }}'
+        patch-docker-image: 'true'
+        target-docker-image-version: '${{ github.ref_name }}'
+        repo-host: oci://${{ vars.HARBOR_HOST }}/charts
+        repo-user: ${{ secrets.HARBOR_USERNAME }}
+        repo-password: ${{ secrets.HARBOR_PASSWORD }}

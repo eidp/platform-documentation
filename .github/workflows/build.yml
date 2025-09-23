@@ -1,0 +1,87 @@
+name: build
+
+on:
+  pull_request:
+    branches:
+    - main
+  push:
+    branches:
+    - main
+
+jobs:
+  build:
+    runs-on: dind-runner
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v5.0.0
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4.4.0
+      with:
+        node-version: '20.x'
+        cache: 'npm'
+
+    - name: Generate version
+      id: generate
+      uses: eidp/actions-semver/generate-version@9e980f27193f56c7d03142145c4939d571e264e3 # v0.2.0
+
+    - name: Get commit SHA
+      id: commit-sha
+      uses: eidp/actions-common/commit-sha@52d95b8e0d9514475eae8f3284b968d5ce083807 # v0.6.0
+
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Run Prettier format check
+      run: npm run format:check
+
+    - name: Run Markdown linting
+      run: npm run lint:md
+
+    - name: Build static site
+      run: npm run build
+
+    - name: Docker build and push
+      id: docker-build-push
+      uses: eidp/actions-docker/build-push@a2fa805dfce694d5c24b208331f61d3bd71128d2 # v0.1.0
+      with:
+        image: ${{ vars.HARBOR_HOST }}/platform-documentation
+        registry: ${{ vars.HARBOR_HOST }}
+        registry-username: ${{ secrets.HARBOR_USERNAME }}
+        registry-password: ${{ secrets.HARBOR_PASSWORD }}
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4.6.2
+      if: success()
+      with:
+        name: build-files
+        path: build/
+        retention-days: 7
+
+    - name: Helm Publish
+      uses: eidp/actions-helm/publish@1d05a75f7a7758dd8495bfc4e7b0c7deebc3b6e1 # v0.3.0
+      with:
+        chart-path: ./charts/app
+        repo-host: oci://${{ vars.HARBOR_HOST }}/charts
+        repo-user: ${{ secrets.HARBOR_USERNAME }}
+        repo-password: ${{ secrets.HARBOR_PASSWORD }}
+        version: ${{ steps.generate.outputs.version }}
+        app-version: ${{ steps.commit-sha.outputs.short-sha }}
+
+  check-workflow-status:
+    runs-on: kubernetes-runner
+    permissions:
+      contents: read
+      actions: read
+    steps:
+    - name: Check Workflow Status
+      id: check-workflow-status
+      uses: eidp/actions-common/check-workflow-status@52d95b8e0d9514475eae8f3284b968d5ce083807 # v0.6.0
+      with:
+        jobs: 'build'
+        github-token: ${{ secrets.GITHUB_TOKEN }}
