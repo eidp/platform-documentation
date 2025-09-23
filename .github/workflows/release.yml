@@ -23,6 +23,10 @@ jobs:
       with:
         workflow-name: build
 
+    - name: Get commit SHA
+      id: commit-sha
+      uses: eidp/actions-common/commit-sha@52d95b8e0d9514475eae8f3284b968d5ce083807 # v0.6.0
+
     - name: Promote Docker Image
       id: promote-image
       uses: eidp/actions-docker/promote@a2fa805dfce694d5c24b208331f61d3bd71128d2 # v0.1.0
@@ -31,7 +35,7 @@ jobs:
         registry: ${{ vars.HARBOR_HOST }}
         registry-username: ${{ secrets.HARBOR_USERNAME }}
         registry-password: ${{ secrets.HARBOR_PASSWORD }}
-        source-tag: ${{ steps.fetch-commit-version.outputs.version }}
+        source-tag: ${{ steps.commit-sha.outputs.short-sha }}
         target-tag: '${{ github.ref_name }}'
 
     - name: Helm Promote
