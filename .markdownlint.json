@@ -1,5 +1,5 @@
 {
   "extends": "markdownlint/style/prettier",
   "no-inline-html": false,
-  "MD024": false
+  "no-duplicate-heading": false
 }
