@@ -9,6 +9,10 @@ jobs:
   release:
     runs-on: kubernetes-runner
 
+    permissions:
+      contents: read
+      actions: read
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v5.0.0
