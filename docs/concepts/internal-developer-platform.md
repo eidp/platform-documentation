@@ -40,7 +40,7 @@ A well-designed Internal Developer Platform typically includes:
 
 ### Improved developer experience
 
-Developers focus on writing code rather than wrestling with infrastructure.
+Developers focus on writing application code rather than wrestling with infrastructure.
 Self-service capabilities reduce dependencies on operations teams, accelerating development cycles.
 
 ### Increased efficiency
