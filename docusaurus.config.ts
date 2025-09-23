@@ -139,6 +139,26 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  scripts: [
+    {
+      id: 'runllm-widget-script',
+      type: 'module',
+      src: 'https://widget.runllm.com',
+      crossorigin: 'true',
+      'runllm-name': 'EIDP docs assistant',
+      'runllm-assistant-id': '1458',
+      'runllm-position': 'BOTTOM_RIGHT',
+      'runllm-keyboard-shortcut': 'Mod+j',
+      'runllm-preset': 'docusaurus',
+      'runllm-brand-logo': 'https://docs.eidp.com/img/logo-icon.svg',
+      'runllm-theme-color': '#0067b2',
+      'runllm-support-email': 'support@eidp.com',
+      'runllm-per-user-usage-limit': '20',
+      'runllm-usage-limit-effective-days': '5',
+      async: true,
+    },
+  ],
 };
 
 export default config;
