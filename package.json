@@ -41,7 +41,7 @@
     "docusaurus-plugin-sass": "0.2.6",
     "markdownlint-cli": "0.45.0",
     "prettier": "3.6.2",
-    "sass": "1.92.1",
+    "sass": "1.93.2",
     "sentences-per-line": "0.3.0",
     "typescript": "5.9.2"
   },
