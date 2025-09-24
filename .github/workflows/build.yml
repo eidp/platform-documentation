@@ -32,7 +32,7 @@ jobs:
 
     - name: Get commit SHA
       id: commit-sha
-      uses: eidp/actions-common/commit-sha@52d95b8e0d9514475eae8f3284b968d5ce083807 # v0.6.0
+      uses: eidp/actions-common/commit-sha@0878b81861674a916b2d0b8e66db5386cc95e066 # v0.6.2
 
     - name: Install dependencies
       run: npm ci
@@ -81,7 +81,7 @@ jobs:
     steps:
     - name: Check Workflow Status
       id: check-workflow-status
-      uses: eidp/actions-common/check-workflow-status@52d95b8e0d9514475eae8f3284b968d5ce083807 # v0.6.0
+      uses: eidp/actions-common/check-workflow-status@0878b81861674a916b2d0b8e66db5386cc95e066 # v0.6.2
       with:
         jobs: 'build'
         github-token: ${{ secrets.GITHUB_TOKEN }}
