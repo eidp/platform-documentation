@@ -146,7 +146,7 @@ const config: Config = {
       type: 'module',
       src: 'https://widget.runllm.com',
       crossorigin: 'true',
-      'runllm-name': 'EIDP docs assistant',
+      'runllm-name': 'EIDP AI assistant',
       'runllm-assistant-id': '1458',
       'runllm-position': 'BOTTOM_RIGHT',
       'runllm-keyboard-shortcut': 'Mod+j',
