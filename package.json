@@ -34,9 +34,9 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.8.1",
-    "@docusaurus/tsconfig": "3.8.1",
-    "@docusaurus/types": "3.8.1",
+    "@docusaurus/module-type-aliases": "3.9.0",
+    "@docusaurus/tsconfig": "3.9.0",
+    "@docusaurus/types": "3.9.0",
     "docusaurus-plugin-llms": "0.2.2",
     "docusaurus-plugin-sass": "0.2.6",
     "markdownlint-cli": "0.45.0",
