@@ -103,7 +103,7 @@ const config: Config = {
             },
             {
               label: 'Linkedin',
-              href: 'https://www.linkedin.com/company/eidp',
+              href: 'https://www.linkedin.com/company/eidp-cloud',
               prependBaseUrlToHref: false,
               position: 'left',
             },
