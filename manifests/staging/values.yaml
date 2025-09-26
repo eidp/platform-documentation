@@ -4,6 +4,7 @@ ingress:
     konghq.com/https-redirect-status-code: "301"
     konghq.com/protocols: https
     konghq.com/strip-path: "false"
+    konghq.com/preserve-host: "true"
   className: kong
   enabled: true
   hosts:
