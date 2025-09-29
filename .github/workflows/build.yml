@@ -28,7 +28,7 @@ jobs:
 
     - name: Generate version
       id: generate
-      uses: eidp/actions-semver/generate-version@9e980f27193f56c7d03142145c4939d571e264e3 # v0.2.0
+      uses: eidp/actions-semver/generate-version@63e0b74c4b0198e4dd764b2c73c5c447bbb1b29a # v0.3.0
 
     - name: Get commit SHA
       id: commit-sha
