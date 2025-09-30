@@ -20,7 +20,7 @@ jobs:
 
     - name: Fetch commit version
       id: fetch-commit-version
-      uses: eidp/actions-semver/fetch-commit-version@9e980f27193f56c7d03142145c4939d571e264e3 # v0.2.0
+      uses: eidp/actions-semver/fetch-commit-version@63e0b74c4b0198e4dd764b2c73c5c447bbb1b29a # v0.3.0
       with:
         workflow-name: build
 
