@@ -12,6 +12,7 @@ This script automatically manages ragpi sources by:
 import os
 import sys
 import re
+import time
 from typing import Any
 from dataclasses import dataclass, field
 
@@ -287,6 +288,9 @@ def sync_github_readme_source(
     else:
         summary.sources_unchanged.append(source_name)
 
+    # Rate limiting: wait between operations
+    time.sleep(10)
+
 
 def sync_github_issues_source(
     ragpi: RagpiClient, org: str, repo_name: str, summary: SyncSummary
@@ -313,6 +317,9 @@ def sync_github_issues_source(
         summary.sources_updated.append(source_name)
     else:
         summary.sources_unchanged.append(source_name)
+
+    # Rate limiting: wait between operations
+    time.sleep(10)
 
 
 def sync_sitemap_source(
@@ -345,6 +352,9 @@ def sync_sitemap_source(
         summary.sources_updated.append(source_name)
     else:
         summary.sources_unchanged.append(source_name)
+
+    # Rate limiting: wait between operations
+    time.sleep(10)
 
 
 def delete_stale_sources(
