@@ -1,6 +1,9 @@
 name: sync-ragpi-sources
 
 on:
+  push:
+    branches:
+      - feat/ragpi-sources-sync
   schedule:
     # Run daily at midnight UTC
     - cron: '0 0 * * *'
