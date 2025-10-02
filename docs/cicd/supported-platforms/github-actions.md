@@ -1,6 +1,12 @@
 ---
 sidebar_label: GitHub actions
 sidebar_position: 2
+keywords:
+  - cicd
+  - continuous integration
+  - continuous delivery
+  - continuous deployment
+  - github actions
 ---
 
 # GitHub Actions

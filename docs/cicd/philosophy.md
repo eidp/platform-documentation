@@ -1,6 +1,17 @@
 ---
 sidebar_label: Philosophy
 sidebar_position: 2
+keywords:
+  - cicd
+  - continuous integration
+  - continuous delivery
+  - continuous deployment
+  - pipelines
+  - components
+  - best practices
+  - compliance
+  - extensible
+  - philosophy
 ---
 
 # Philosophy

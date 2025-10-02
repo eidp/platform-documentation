@@ -3,6 +3,10 @@ id: index
 sidebar_label: Overview
 sidebar_position: 1
 slug: /
+keywords:
+  - eidp
+  - internal developer platform
+  - developer platform
 ---
 
 # EIDP platform documentation

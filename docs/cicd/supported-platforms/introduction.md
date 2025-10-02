@@ -1,6 +1,11 @@
 ---
 sidebar_label: Introduction
 sidebar_position: 1
+keywords:
+  - cicd
+  - continuous integration
+  - continuous delivery
+  - continuous deployment
 ---
 
 # Supported platforms

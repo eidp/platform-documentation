@@ -1,6 +1,10 @@
 ---
 sidebar_label: Features & components
 sidebar_position: 2
+keywords:
+  - features
+  - components
+  - overview
 ---
 
 # Features & components

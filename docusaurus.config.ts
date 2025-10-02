@@ -139,7 +139,28 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
-
+  headTags: [
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'preconnect',
+        href: 'https://docs.eidp.com',
+      },
+    },
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org/',
+        '@type': 'Organization',
+        name: 'EIDP Service B.V.',
+        url: 'https://eidp.com/',
+        logo: 'https://docs.eidp.com/img/logo-icon.svg',
+      }),
+    },
+  ],
   scripts: [
     {
       id: 'runllm-widget-script',

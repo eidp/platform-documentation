@@ -1,6 +1,10 @@
 ---
 sidebar_label: What is an IDP?
 sidebar_position: 1
+keywords:
+  - idp
+  - internal developer platform
+  - developer platform
 ---
 
 # What is an internal developer platform?
