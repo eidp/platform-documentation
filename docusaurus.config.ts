@@ -151,7 +151,6 @@ const config: Config = {
       'data-primary-color': '#0067b2',
       'data-secondary-color': '#2b2e34',
       'data-logo-url': '/img/logo-icon.svg',
-      async: true,
     },
   ],
 };
