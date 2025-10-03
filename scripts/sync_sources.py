@@ -68,9 +68,9 @@ class GitHubClient:
         }
 
     def search_repositories(self, org: str, topic: str) -> list[dict[str, Any]]:
-        """Search for repositories by organization and topic."""
+        """Search for repositories by organization and topic (public only)."""
         url = "https://api.github.com/search/repositories"
-        params = {"q": f"topic:{topic} org:{org}", "per_page": 100}
+        params = {"q": f"topic:{topic} org:{org} is:public", "per_page": 100}
 
         repos = []
         while url:
