@@ -17,7 +17,6 @@ export default function FooterWrapper(props: Props): ReactNode {
         let listItems = listContainer.querySelectorAll('li');
 
         listItems.forEach((item) => {
-          console.log('Processing item:', item);
           let className = item.textContent
             .trim()
             .toLowerCase()
