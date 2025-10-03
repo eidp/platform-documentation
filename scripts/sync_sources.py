@@ -27,7 +27,6 @@ class SyncSummary:
     sources_created: list[str] = field(default_factory=list)
     sources_updated: list[str] = field(default_factory=list)
     sources_deleted: list[str] = field(default_factory=list)
-    sources_unchanged: list[str] = field(default_factory=list)
 
     def print_summary(self):
         """Print formatted summary of operations."""
@@ -37,7 +36,6 @@ class SyncSummary:
         print(f"Repositories discovered: {self.repos_discovered}")
         print(f"Sources created: {len(self.sources_created)}")
         print(f"Sources updated: {len(self.sources_updated)}")
-        print(f"Sources unchanged: {len(self.sources_unchanged)}")
         print(f"Sources deleted: {len(self.sources_deleted)}")
 
         if self.sources_created:
@@ -214,8 +212,8 @@ class RagpiClient:
         self, name: str, description: str, connector: dict[str, Any]
     ) -> str:
         """
-        Create or update a source if needed.
-        Returns: 'created', 'updated', or 'unchanged'
+        Create or update a source, always triggering sync.
+        Returns: 'created' or 'updated'
         """
         existing = self.get_source(name)
 
@@ -224,17 +222,10 @@ class RagpiClient:
             self.create_source(name, description, connector)
             return "created"
 
-        # Compare configuration
-        if (
-            existing.get("description") != description
-            or existing.get("connector") != connector
-        ):
-            print(f"  Updating source: {name}")
-            self.update_source(name, description, connector)
-            return "updated"
-
-        print(f"  Source unchanged: {name}")
-        return "unchanged"
+        # Always update to trigger sync, even if config unchanged
+        print(f"  Updating source: {name}")
+        self.update_source(name, description, connector)
+        return "updated"
 
 
 def sanitize_source_name(name: str) -> str:
@@ -283,10 +274,8 @@ def sync_github_readme_source(
 
     if result == "created":
         summary.sources_created.append(source_name)
-    elif result == "updated":
-        summary.sources_updated.append(source_name)
     else:
-        summary.sources_unchanged.append(source_name)
+        summary.sources_updated.append(source_name)
 
     # Rate limiting: wait between operations
     time.sleep(10)
@@ -313,10 +302,8 @@ def sync_github_issues_source(
 
     if result == "created":
         summary.sources_created.append(source_name)
-    elif result == "updated":
-        summary.sources_updated.append(source_name)
     else:
-        summary.sources_unchanged.append(source_name)
+        summary.sources_updated.append(source_name)
 
     # Rate limiting: wait between operations
     time.sleep(10)
@@ -348,10 +335,8 @@ def sync_sitemap_source(
 
     if result == "created":
         summary.sources_created.append(source_name)
-    elif result == "updated":
-        summary.sources_updated.append(source_name)
     else:
-        summary.sources_unchanged.append(source_name)
+        summary.sources_updated.append(source_name)
 
     # Rate limiting: wait between operations
     time.sleep(10)
