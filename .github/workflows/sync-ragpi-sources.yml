@@ -1,9 +1,6 @@
 name: sync-ragpi-sources
 
 on:
-  push:
-    branches:
-      - feat/ragpi-sources-sync
   schedule:
     # Run daily at midnight UTC
     - cron: '0 0 * * *'
@@ -40,7 +37,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           RAGPI_API_KEY: ${{ secrets.RAGPI_API_KEY }}
-          RAGPI_HOST: https://ragpi-temp.dev.eu1.eidp.io
+          RAGPI_HOST: https://ragpi.eidp.com
           GITHUB_ORG: ${{ github.event.inputs.github_org || 'eidp' }}
           GITHUB_TOPIC: 'github-actions'
           SITEMAP_URL: 'https://docs.eidp.com/sitemap.xml'
