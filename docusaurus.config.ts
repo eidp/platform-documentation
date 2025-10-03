@@ -142,21 +142,15 @@ const config: Config = {
 
   scripts: [
     {
-      id: 'runllm-widget-script',
+      id: 'ragpi-widget',
       type: 'module',
-      src: 'https://widget.runllm.com',
+      src: 'https://cdn.jsdelivr.net/gh/ragpi/ragpi-web-widget@v0.1.1/dist/ragpi-widget.js',
       crossorigin: 'true',
-      'runllm-name': 'EIDP AI assistant',
-      'runllm-assistant-id': '1458',
-      'runllm-position': 'BOTTOM_RIGHT',
-      'runllm-keyboard-shortcut': 'Mod+j',
-      'runllm-preset': 'docusaurus',
-      'runllm-brand-logo': 'https://docs.eidp.com/img/logo-icon.svg',
-      'runllm-theme-color': '#0067b2',
-      'runllm-support-email': 'support@eidp.com',
-      'runllm-per-user-usage-limit': '20',
-      'runllm-usage-limit-effective-days': '5',
-      async: true,
+      'data-recaptcha-site-key': '6LdPANwrAAAAAM-cNpR156AEDJeEYmevnJzWkBS_',
+      'data-ragpi-gateway-url': 'https://recaptcha.ragpi.eidp.com',
+      'data-primary-color': '#0067b2',
+      'data-secondary-color': '#2b2e34',
+      'data-logo-url': '/img/logo-icon.svg',
     },
   ],
 };
