@@ -1,0 +1,44 @@
+name: sync-ragpi-sources
+
+on:
+  schedule:
+    # Run daily at midnight UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # Allow manual trigger
+    inputs:
+      github_org:
+        description: 'GitHub organization to scan'
+        required: false
+        default: 'eidp'
+      github_topic:
+        description: 'GitHub topic to filter by'
+        required: false
+        default: 'github-actions'
+
+jobs:
+  sync-sources:
+    runs-on: kubernetes-runner
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          pip install requests
+
+      - name: Run sync script
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          RAGPI_API_KEY: ${{ secrets.RAGPI_API_KEY }}
+          RAGPI_HOST: https://ragpi.eidp.com
+          GITHUB_ORG: ${{ github.event.inputs.github_org || 'eidp' }}
+          GITHUB_TOPIC: 'github-actions'
+          SITEMAP_URL: 'https://docs.eidp.com/sitemap.xml'
+        run: python scripts/sync_sources.py
