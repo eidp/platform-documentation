@@ -15,6 +15,10 @@ on:
         description: 'GitHub topic to filter by'
         required: false
         default: 'github-actions'
+      sitemap_urls:
+        description: 'Comma-separated sitemap URLs to sync'
+        required: false
+        default: 'https://docs.eidp.com/sitemap.xml, https://eidp.com/page-sitemap.xml'
 
 jobs:
   sync-sources:
@@ -40,5 +44,5 @@ jobs:
           RAGPI_HOST: https://ragpi.eidp.com
           GITHUB_ORG: ${{ github.event.inputs.github_org || 'eidp' }}
           GITHUB_TOPIC: 'github-actions'
-          SITEMAP_URL: 'https://docs.eidp.com/sitemap.xml'
+          SITEMAP_URLS: ${{ github.event.inputs.sitemap_urls || 'https://docs.eidp.com/sitemap.xml, https://eidp.com/page-sitemap.xml' }}
         run: python scripts/sync_sources.py
