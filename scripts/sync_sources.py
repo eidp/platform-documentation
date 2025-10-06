@@ -19,6 +19,8 @@ from dataclasses import dataclass, field
 import requests
 
 
+SYNC_DELAY_SECONDS = 10  # Delay between API calls to avoid Ragpi from failing
+
 @dataclass
 class SyncSummary:
     """Track operations performed during sync."""
@@ -256,64 +258,84 @@ def sync_github_readme_source(
     org: str,
     repo_name: str,
     summary: SyncSummary,
-):
+) -> bool:
     """Sync a github_readme source for a repository."""
-    source_name = sanitize_source_name(f"{org}-{repo_name}-readme")
-    description = f"Auto-managed: README files from {org}/{repo_name}"
-
-    # Find subdirectories with READMEs
     try:
+        source_name = sanitize_source_name(f"{org}-{repo_name}-readme")
+        description = f"Auto-managed: README files from {org}/{repo_name}"
+
+        # Find subdirectories with READMEs
         sub_dirs = github.find_readme_subdirs(org, repo_name)
+
+        connector = {
+            "type": "github_readme",
+            "repo_owner": org,
+            "repo_name": repo_name,
+            "include_root": True,
+            "sub_dirs": sub_dirs if sub_dirs else None,
+            "ref": None,
+        }
+
+        result = ragpi.ensure_source(source_name, description, connector)
+
+        if result == "created":
+            summary.sources_created.append(source_name)
+        else:
+            summary.sources_updated.append(source_name)
+
+        # Rate limiting: wait between operations
+        time.sleep(SYNC_DELAY_SECONDS)
+
+        return True
+
     except Exception as e:
-        print(f"  ⚠ Error finding READMEs in {org}/{repo_name}: {e}")
-        raise
+        print(f"  ⚠ Error syncing GitHub README source for {org}/{repo_name}: {e}")
+        summary.sources_skipped.append(f"{org}/{repo_name} (README)")
 
-    connector = {
-        "type": "github_readme",
-        "repo_owner": org,
-        "repo_name": repo_name,
-        "include_root": True,
-        "sub_dirs": sub_dirs if sub_dirs else None,
-        "ref": None,
-    }
+        # Rate limiting even on failure
+        time.sleep(SYNC_DELAY_SECONDS)
 
-    result = ragpi.ensure_source(source_name, description, connector)
-
-    if result == "created":
-        summary.sources_created.append(source_name)
-    else:
-        summary.sources_updated.append(source_name)
-
-    # Rate limiting: wait between operations
-    time.sleep(10)
+        return False
 
 
 def sync_github_issues_source(
     ragpi: RagpiClient, org: str, repo_name: str, summary: SyncSummary
-):
+) -> bool:
     """Sync a github_issues source for a repository."""
-    source_name = sanitize_source_name(f"{org}-{repo_name}-issues")
-    description = f"Auto-managed: Issues from {org}/{repo_name}"
+    try:
+        source_name = sanitize_source_name(f"{org}-{repo_name}-issues")
+        description = f"Auto-managed: Issues from {org}/{repo_name}"
 
-    connector = {
-        "type": "github_issues",
-        "repo_owner": org,
-        "repo_name": repo_name,
-        "state": "all",
-        "include_labels": None,
-        "exclude_labels": None,
-        "issue_age_limit": None,
-    }
+        connector = {
+            "type": "github_issues",
+            "repo_owner": org,
+            "repo_name": repo_name,
+            "state": "all",
+            "include_labels": None,
+            "exclude_labels": None,
+            "issue_age_limit": None,
+        }
 
-    result = ragpi.ensure_source(source_name, description, connector)
+        result = ragpi.ensure_source(source_name, description, connector)
 
-    if result == "created":
-        summary.sources_created.append(source_name)
-    else:
-        summary.sources_updated.append(source_name)
+        if result == "created":
+            summary.sources_created.append(source_name)
+        else:
+            summary.sources_updated.append(source_name)
 
-    # Rate limiting: wait between operations
-    time.sleep(10)
+        # Rate limiting: wait between operations
+        time.sleep(SYNC_DELAY_SECONDS)
+
+        return True
+
+    except Exception as e:
+        print(f"  ⚠ Error syncing GitHub Issues source for {org}/{repo_name}: {e}")
+        summary.sources_skipped.append(f"{org}/{repo_name} (Issues)")
+
+        # Rate limiting even on failure
+        time.sleep(SYNC_DELAY_SECONDS)
+
+        return False
 
 
 def sync_sitemap_source(
@@ -347,7 +369,7 @@ def sync_sitemap_source(
             summary.sources_updated.append(source_name)
 
         # Rate limiting: wait between operations
-        time.sleep(10)
+        time.sleep(SYNC_DELAY_SECONDS)
     except Exception as e:
         print(f"  ⚠ Error syncing sitemap {sitemap_url}: {e}")
         summary.sources_skipped.append(sitemap_url)
@@ -431,13 +453,15 @@ def main():
 
             # GitHub README source
             readme_source_name = sanitize_source_name(f"{github_org}-{repo_name}-readme")
-            expected_sources.add(readme_source_name)
-            sync_github_readme_source(github, ragpi, github_org, repo_name, summary)
+            if sync_github_readme_source(github, ragpi, github_org, repo_name, summary):
+                expected_sources.add(readme_source_name)
+                time.sleep(SYNC_DELAY_SECONDS)
 
             # GitHub Issues source
             issues_source_name = sanitize_source_name(f"{github_org}-{repo_name}-issues")
-            expected_sources.add(issues_source_name)
-            sync_github_issues_source(ragpi, github_org, repo_name, summary)
+            if sync_github_issues_source(ragpi, github_org, repo_name, summary):
+                expected_sources.add(issues_source_name)
+                time.sleep(SYNC_DELAY_SECONDS)
 
         # Sync sitemap sources
         if sitemap_urls:
