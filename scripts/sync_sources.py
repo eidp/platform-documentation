@@ -19,6 +19,8 @@ from dataclasses import dataclass, field
 import requests
 
 
+SYNC_DELAY_SECONDS = 10  # Delay between API calls to avoid Ragpi from failing
+
 @dataclass
 class SyncSummary:
     """Track operations performed during sync."""
@@ -27,6 +29,7 @@ class SyncSummary:
     sources_created: list[str] = field(default_factory=list)
     sources_updated: list[str] = field(default_factory=list)
     sources_deleted: list[str] = field(default_factory=list)
+    sources_skipped: list[str] = field(default_factory=list)
 
     def print_summary(self):
         """Print formatted summary of operations."""
@@ -37,6 +40,7 @@ class SyncSummary:
         print(f"Sources created: {len(self.sources_created)}")
         print(f"Sources updated: {len(self.sources_updated)}")
         print(f"Sources deleted: {len(self.sources_deleted)}")
+        print(f"Sources skipped: {len(self.sources_skipped)}")
 
         if self.sources_created:
             print("\nCreated:")
@@ -52,6 +56,11 @@ class SyncSummary:
             print("\nDeleted:")
             for name in self.sources_deleted:
                 print(f"  ✗ {name}")
+
+        if self.sources_skipped:
+            print("\nSkipped (errors):")
+            for name in self.sources_skipped:
+                print(f"  ⚠ {name}")
 
         print("=" * 60)
 
@@ -249,97 +258,122 @@ def sync_github_readme_source(
     org: str,
     repo_name: str,
     summary: SyncSummary,
-):
+) -> bool:
     """Sync a github_readme source for a repository."""
-    source_name = sanitize_source_name(f"{org}-{repo_name}-readme")
-    description = f"Auto-managed: README files from {org}/{repo_name}"
-
-    # Find subdirectories with READMEs
     try:
+        source_name = sanitize_source_name(f"{org}-{repo_name}-readme")
+        description = f"Auto-managed: README files from {org}/{repo_name}"
+
+        # Find subdirectories with READMEs
         sub_dirs = github.find_readme_subdirs(org, repo_name)
+
+        connector = {
+            "type": "github_readme",
+            "repo_owner": org,
+            "repo_name": repo_name,
+            "include_root": True,
+            "sub_dirs": sub_dirs if sub_dirs else None,
+            "ref": None,
+        }
+
+        result = ragpi.ensure_source(source_name, description, connector)
+
+        if result == "created":
+            summary.sources_created.append(source_name)
+        else:
+            summary.sources_updated.append(source_name)
+
+        # Rate limiting: wait between operations
+        time.sleep(SYNC_DELAY_SECONDS)
+
+        return True
+
     except Exception as e:
-        print(f"  ⚠ Error finding READMEs in {org}/{repo_name}: {e}")
-        raise
+        print(f"  ⚠ Error syncing GitHub README source for {org}/{repo_name}: {e}")
+        summary.sources_skipped.append(f"{org}/{repo_name} (README)")
 
-    connector = {
-        "type": "github_readme",
-        "repo_owner": org,
-        "repo_name": repo_name,
-        "include_root": True,
-        "sub_dirs": sub_dirs if sub_dirs else None,
-        "ref": None,
-    }
+        # Rate limiting even on failure
+        time.sleep(SYNC_DELAY_SECONDS)
 
-    result = ragpi.ensure_source(source_name, description, connector)
-
-    if result == "created":
-        summary.sources_created.append(source_name)
-    else:
-        summary.sources_updated.append(source_name)
-
-    # Rate limiting: wait between operations
-    time.sleep(10)
+        return False
 
 
 def sync_github_issues_source(
     ragpi: RagpiClient, org: str, repo_name: str, summary: SyncSummary
-):
+) -> bool:
     """Sync a github_issues source for a repository."""
-    source_name = sanitize_source_name(f"{org}-{repo_name}-issues")
-    description = f"Auto-managed: Issues from {org}/{repo_name}"
+    try:
+        source_name = sanitize_source_name(f"{org}-{repo_name}-issues")
+        description = f"Auto-managed: Issues from {org}/{repo_name}"
 
-    connector = {
-        "type": "github_issues",
-        "repo_owner": org,
-        "repo_name": repo_name,
-        "state": "all",
-        "include_labels": None,
-        "exclude_labels": None,
-        "issue_age_limit": None,
-    }
+        connector = {
+            "type": "github_issues",
+            "repo_owner": org,
+            "repo_name": repo_name,
+            "state": "all",
+            "include_labels": None,
+            "exclude_labels": None,
+            "issue_age_limit": None,
+        }
 
-    result = ragpi.ensure_source(source_name, description, connector)
+        result = ragpi.ensure_source(source_name, description, connector)
 
-    if result == "created":
-        summary.sources_created.append(source_name)
-    else:
-        summary.sources_updated.append(source_name)
+        if result == "created":
+            summary.sources_created.append(source_name)
+        else:
+            summary.sources_updated.append(source_name)
 
-    # Rate limiting: wait between operations
-    time.sleep(10)
+        # Rate limiting: wait between operations
+        time.sleep(SYNC_DELAY_SECONDS)
+
+        return True
+
+    except Exception as e:
+        print(f"  ⚠ Error syncing GitHub Issues source for {org}/{repo_name}: {e}")
+        summary.sources_skipped.append(f"{org}/{repo_name} (Issues)")
+
+        # Rate limiting even on failure
+        time.sleep(SYNC_DELAY_SECONDS)
+
+        return False
 
 
 def sync_sitemap_source(
     ragpi: RagpiClient, sitemap_url: str, summary: SyncSummary
 ):
     """Sync the sitemap source."""
-    # Extract domain for naming and root URL for include pattern
-    domain_match = re.search(r"(https?://[^/]+)", sitemap_url)
-    if not domain_match:
-        raise ValueError(f"Invalid sitemap URL: {sitemap_url}")
+    try:
+        # Extract domain for naming and root URL for include pattern
+        domain_match = re.search(r"(https?://[^/]+)", sitemap_url)
+        if not domain_match:
+            raise ValueError(f"Invalid sitemap URL: {sitemap_url}")
 
-    root_url = domain_match.group(1)
-    domain_name = re.search(r"https?://([^/]+)", sitemap_url).group(1).replace(".", "-")
-    source_name = sanitize_source_name(f"{domain_name}")
-    description = f"Auto-managed: Documentation from {sitemap_url}"
+        root_url = domain_match.group(1)
+        domain_name = re.search(r"https?://([^/]+)", sitemap_url).group(1).replace(".", "-")
+        source_name = sanitize_source_name(f"{domain_name}")
+        description = f"Auto-managed: Documentation from {sitemap_url}"
 
-    connector = {
-        "type": "sitemap",
-        "sitemap_url": sitemap_url,
-        "include_pattern": f"{root_url}/*",
-        "exclude_pattern": None,
-    }
+        connector = {
+            "type": "sitemap",
+            "sitemap_url": sitemap_url,
+            "include_pattern": f"{root_url}/*",
+            "exclude_pattern": None,
+        }
 
-    print(f"\nSyncing sitemap source...")
-    result = ragpi.ensure_source(source_name, description, connector)
+        print(f"  Syncing sitemap source: {source_name}")
+        result = ragpi.ensure_source(source_name, description, connector)
 
-    if result == "created":
-        summary.sources_created.append(source_name)
-    else:
-        summary.sources_updated.append(source_name)
+        if result == "created":
+            summary.sources_created.append(source_name)
+        else:
+            summary.sources_updated.append(source_name)
 
-    # Rate limiting: wait between operations
-    time.sleep(10)
+        # Rate limiting: wait between operations
+        time.sleep(SYNC_DELAY_SECONDS)
+    except Exception as e:
+        print(f"  ⚠ Error syncing sitemap {sitemap_url}: {e}")
+        summary.sources_skipped.append(sitemap_url)
+        # Don't re-raise - just log and continue
 
 
 def delete_stale_sources(
@@ -375,7 +409,8 @@ def main():
     ragpi_host = os.getenv("RAGPI_HOST")
     github_org = os.getenv("GITHUB_ORG", "eidp")
     github_topic = os.getenv("GITHUB_TOPIC", "actions")
-    sitemap_url = os.getenv("SITEMAP_URL", "https://docs.eidp.com/sitemap.xml")
+    sitemap_urls_str = os.getenv("SITEMAP_URLS", "https://docs.eidp.com/sitemap.xml")
+    sitemap_urls = [url.strip() for url in sitemap_urls_str.split(",") if url.strip()]
 
     # Validate required variables
     missing = []
@@ -394,7 +429,7 @@ def main():
     print(f"  GitHub Org: {github_org}")
     print(f"  GitHub Topic: {github_topic}")
     print(f"  Ragpi Host: {ragpi_host}")
-    print(f"  Sitemap URL: {sitemap_url}")
+    print(f"  Sitemap URLs: {', '.join(sitemap_urls)}")
     print()
 
     # Initialize clients
@@ -418,20 +453,28 @@ def main():
 
             # GitHub README source
             readme_source_name = sanitize_source_name(f"{github_org}-{repo_name}-readme")
-            expected_sources.add(readme_source_name)
-            sync_github_readme_source(github, ragpi, github_org, repo_name, summary)
+            if sync_github_readme_source(github, ragpi, github_org, repo_name, summary):
+                expected_sources.add(readme_source_name)
+                time.sleep(SYNC_DELAY_SECONDS)
 
             # GitHub Issues source
             issues_source_name = sanitize_source_name(f"{github_org}-{repo_name}-issues")
-            expected_sources.add(issues_source_name)
-            sync_github_issues_source(ragpi, github_org, repo_name, summary)
+            if sync_github_issues_source(ragpi, github_org, repo_name, summary):
+                expected_sources.add(issues_source_name)
+                time.sleep(SYNC_DELAY_SECONDS)
 
-        # Sync sitemap source
-        domain = re.search(r"https?://([^/]+)", sitemap_url)
-        domain_name = domain.group(1).replace(".", "-") if domain else "docs"
-        sitemap_source_name = sanitize_source_name(f"{domain_name}")
-        expected_sources.add(sitemap_source_name)
-        sync_sitemap_source(ragpi, sitemap_url, summary)
+        # Sync sitemap sources
+        if sitemap_urls:
+            print(f"\nSyncing {len(sitemap_urls)} sitemap source(s)...")
+            for sitemap_url in sitemap_urls:
+                print(f"\n  Processing sitemap: {sitemap_url}")
+                domain = re.search(r"https?://([^/]+)", sitemap_url)
+                domain_name = domain.group(1).replace(".", "-") if domain else "docs"
+                sitemap_source_name = sanitize_source_name(f"{domain_name}")
+                expected_sources.add(sitemap_source_name)
+                sync_sitemap_source(ragpi, sitemap_url, summary)
+        else:
+            print("\nNo sitemap URLs provided, skipping sitemap sync")
 
         # Delete stale sources
         delete_stale_sources(ragpi, expected_sources, summary)
