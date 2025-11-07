@@ -1,0 +1,32 @@
+name: cleanup-stale-previews
+
+on:
+  schedule:
+    - cron: '0 2 * * *' # Daily at 2 AM UTC
+  workflow_dispatch:
+
+jobs:
+  cleanup-stale:
+    runs-on: kubernetes-runner
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
+      deployments: write
+
+    steps:
+      - name: Create Kubernetes context
+        id: create-context
+        uses: eidp/actions-kubernetes/create-context@6d660c68555a361bb6ac22b24faac3be34cee3e0 # v0.1.0
+        with:
+          cluster: development
+          api-server: ${{ vars.K8S_API_SERVER_DEVELOPMENT }}
+          certificate-authority-data:
+            ${{ secrets.K8S_CERTIFICATE_AUTHORITY_DATA_DEVELOPMENT }}
+
+      - name: Cleanup previews older than 7 days
+        uses: eidp/actions-kubernetes/teardown-preview@6d660c68555a361bb6ac22b24faac3be34cee3e0 # v0.1.0
+        with:
+          kubernetes-context: ${{ steps.create-context.outputs.context-name }}
+          github-token: ${{ github.token }}
+          max-age: 7d
