@@ -27,21 +27,21 @@ Hence, we recommend to only set up a new instance when you have a clear reason t
 
 EIDP's infrastructure provides the following resources, based on open source components.
 
-| **Resource** | **Details** | **Technology** |
-|--------------|-------------|--------------|
-| **Compute orchestration** | Run workloads in EIDP instances based on OCI container images | Kubernetes |
-| **Database** | Store persistent data for apps in one or multiple database clusters | PostgreSQL |
-| **Load balancing** | Serve your app or product safely | Kong |
-| **Object storage** | Store data in objects and buckets | OpenStack |
-| **Orchestration policy** | Enforce security and operational policies for workloads | Gatekeeper |
-| **Backups** | Backups for database and disk storage | Velero |
-| **Container registry** | Privately store the container images and OCI artifacts that run your product | Harbor |
-| **Monitoring & Observability** | Keep tabs on product deployments, performance, uptime & errors | Grafana / Loki |
-| **Logging & Metrics** | Safely collect logs in an immutable separate location | Prometheus |
-| **Continuous delivery** | Release new infrastructure straight from your CI pipelines | Flux CD |
-| **CI pipelines** | Test and release from your code platform | EIDP provided |
-| **Deployment templates** | Quickly spin up additional apps and infrastructure | EIDP provided |
-| **Secrets management** (planned) | Securely manage secrets used to run and deploy your app | OpenBao |
+| **Resource**                     | **Details**                                                                  | **Technology** |
+|----------------------------------|------------------------------------------------------------------------------|----------------|
+| **Compute orchestration**        | Run workloads in EIDP instances based on OCI container images                | Kubernetes     |
+| **Database**                     | Store persistent data for apps in one or multiple database clusters          | PostgreSQL     |
+| **Load balancing**               | Serve your app or product safely                                             | Kong           |
+| **Object storage**               | Store data in objects and buckets                                            | OpenStack      |
+| **Orchestration policy**         | Enforce security and operational policies for workloads                      | Kyverno        |
+| **Backups**                      | Backups for database and disk storage                                        | Velero         |
+| **Container registry**           | Privately store the container images and OCI artifacts that run your product | Harbor         |
+| **Monitoring & Observability**   | Keep tabs on product deployments, performance, uptime & errors               | Grafana / Loki |
+| **Logging & Metrics**            | Safely collect logs in an immutable separate location                        | Prometheus     |
+| **Continuous delivery**          | Release new infrastructure straight from your CI pipelines                   | Flux CD        |
+| **CI pipelines**                 | Test and release from your code platform                                     | EIDP provided  |
+| **Deployment templates**         | Quickly spin up additional apps and infrastructure                           | EIDP provided  |
+| **Secrets management** (planned) | Securely manage secrets used to run and deploy your app                      | OpenBao        |
 
 ## Security operations
 
