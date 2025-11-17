@@ -12,7 +12,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: platform-documentation-repo
-      version: 0.5.0
+      version: 0.6.0
   driftDetection:
     mode: enabled
   install:
