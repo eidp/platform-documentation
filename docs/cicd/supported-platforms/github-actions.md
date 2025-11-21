@@ -20,6 +20,7 @@ The following repositories provide GitHub Actions:
 These actions are not specific to any technology or platform.
 - [Docker Actions](https://github.com/eidp/actions-docker): Actions for building, pushing, and promoting Docker images.
 - [Helm Actions](https://github.com/eidp/actions-helm): Actions for publishing, and promoting Helm charts and releases.
+- [Kubernetes Actions](https://github.com/eidp/actions-kubernetes): Actions for managing Kubernetes resources and deployments.
 - [Semantic versioning Actions](https://github.com/eidp/actions-semver): Actions for generating and managing semantic versions.
 - [Terraform Actions](https://github.com/eidp/actions-terraform): Actions for managing Terraform resources.
 
