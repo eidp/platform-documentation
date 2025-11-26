@@ -64,10 +64,10 @@ jobs:
         retention-days: 7
 
     - name: Helm Publish
-      uses: eidp/actions-helm/publish@1d05a75f7a7758dd8495bfc4e7b0c7deebc3b6e1 # v0.3.0
+      uses: eidp/actions-helm/publish@5fbdd1fff2866d3104da9986b98e0b88e6c7aa4e # v1.0.0
       with:
         chart-path: ./charts/app
-        repo-host: oci://${{ vars.HARBOR_HOST }}/charts
+        repo-url: oci://${{ vars.HARBOR_HOST }}/charts
         repo-user: ${{ secrets.HARBOR_USERNAME }}
         repo-password: ${{ secrets.HARBOR_PASSWORD }}
         version: ${{ steps.generate.outputs.version }}
