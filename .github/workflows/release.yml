@@ -47,6 +47,6 @@ jobs:
         target-version: '${{ github.ref_name }}'
         patch-docker-image: 'true'
         target-docker-image-version: '${{ github.ref_name }}'
-        repo-host: oci://${{ vars.HARBOR_HOST }}/charts
+        repo-url: oci://${{ vars.HARBOR_HOST }}/charts
         repo-user: ${{ secrets.HARBOR_USERNAME }}
         repo-password: ${{ secrets.HARBOR_PASSWORD }}

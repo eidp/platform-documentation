@@ -67,7 +67,7 @@ jobs:
       uses: eidp/actions-helm/publish@5fbdd1fff2866d3104da9986b98e0b88e6c7aa4e # v1.0.0
       with:
         chart-path: ./charts/app
-        repo-host: oci://${{ vars.HARBOR_HOST }}/charts
+        repo-url: oci://${{ vars.HARBOR_HOST }}/charts
         repo-user: ${{ secrets.HARBOR_USERNAME }}
         repo-password: ${{ secrets.HARBOR_PASSWORD }}
         version: ${{ steps.generate.outputs.version }}
