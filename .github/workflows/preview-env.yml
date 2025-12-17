@@ -54,7 +54,7 @@ jobs:
 
       - name: Create Kubernetes context
         id: create-context
-        uses: eidp/actions-kubernetes/create-context@ea139f159e1410c1cf5292625b54f64299709978 # v0.1.1
+        uses: eidp/actions-kubernetes/create-context@b83353c07c72c00ab113c118aec174ff3e06420b # v0.1.3
         with:
           # This references the development cluster. Preview environments are typically deployed to a development cluster.
           cluster: development
@@ -64,7 +64,7 @@ jobs:
 
       - name: Deploy preview
         id: deploy-preview
-        uses: eidp/actions-kubernetes/deploy-preview@ea139f159e1410c1cf5292625b54f64299709978 # v0.1.1
+        uses: eidp/actions-kubernetes/deploy-preview@b83353c07c72c00ab113c118aec174ff3e06420b # v0.1.3
         with:
           # This references the GitHub environment for this PR, not the target cluster environment.
           environment: 'pr-${{ github.event.number || github.event.issue.number }}'
@@ -77,7 +77,7 @@ jobs:
       - name: Verify preview deployment
         id: verify-preview
         if: github.event_name != 'issue_comment' || steps.deploy-preview.outputs.namespace != ''
-        uses: eidp/actions-kubernetes/verify-up@ea139f159e1410c1cf5292625b54f64299709978 # v0.1.1
+        uses: eidp/actions-kubernetes/verify-up@b83353c07c72c00ab113c118aec174ff3e06420b # v0.1.3
         with:
           environment: 'pr-${{ github.event.number || github.event.issue.number }}'
           kubernetes-context: ${{ steps.create-context.outputs.context-name }}
@@ -96,7 +96,7 @@ jobs:
     steps:
       - name: Create Kubernetes context
         id: create-context
-        uses: eidp/actions-kubernetes/create-context@ea139f159e1410c1cf5292625b54f64299709978 # v0.1.1
+        uses: eidp/actions-kubernetes/create-context@b83353c07c72c00ab113c118aec174ff3e06420b # v0.1.3
         with:
           cluster: development
           api-server: ${{ vars.K8S_API_SERVER_DEVELOPMENT }}
@@ -104,7 +104,7 @@ jobs:
             ${{ secrets.K8S_CERTIFICATE_AUTHORITY_DATA_DEVELOPMENT }}
 
       - name: Teardown preview
-        uses: eidp/actions-kubernetes/teardown-preview@ea139f159e1410c1cf5292625b54f64299709978 # v0.1.1
+        uses: eidp/actions-kubernetes/teardown-preview@b83353c07c72c00ab113c118aec174ff3e06420b # v0.1.3
         with:
           kubernetes-context: ${{ steps.create-context.outputs.context-name }}
           reference: ${{ github.event.number || github.event.issue.number }}
