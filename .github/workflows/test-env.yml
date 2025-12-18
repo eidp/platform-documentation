@@ -1,4 +1,4 @@
-name: test-env
+name: testing-environment
 
 on:
   push:
