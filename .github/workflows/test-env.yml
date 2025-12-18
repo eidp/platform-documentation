@@ -1,0 +1,51 @@
+name: testing-environment
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+ verify-test-deployment:
+    runs-on: kubernetes-runner
+
+    permissions:
+      contents: read
+      id-token: write
+      deployments: write
+
+    environment: testing
+    concurrency:
+      group: testing-environment
+      cancel-in-progress: true
+
+    steps:
+    # This step fetches the semantic version based on the commit history.
+    # The same version should be used to tag the Helm chart, in case your repository contains one.
+    - name: Fetch commit version
+      id: commit-version
+      uses: eidp/actions-semver/fetch-commit-version@d4f33761d7dafbeff3241fe8afe927a1d7516703 # v0.4.0
+      with:
+        workflow-name: build  # The name of the workflow that builds the artifacts Docker container / Helm chart
+
+    - name: Create Kubernetes context
+      id: create-context
+      uses: eidp/actions-kubernetes/create-context@fa469cb6b7f371998f500b1adefb4c5372a5f678 # v1.0.0
+      with:
+        cluster: testing
+        api-server: ${{ vars.K8S_API_SERVER_TESTING }}
+        certificate-authority-data:
+          ${{ secrets.K8S_CERTIFICATE_AUTHORITY_DATA_TESTING }}
+        keycloak-url: ${{ vars.KEYCLOAK_URL }}
+        token-exchange-client-id: ${{ secrets.TOKEN_EXCHANGE_CLIENT_ID }}
+        token-exchange-client-secret: ${{ secrets.TOKEN_EXCHANGE_CLIENT_SECRET }}
+
+    - name: Verify deployment test environment
+      uses: eidp/actions-kubernetes/verify-up@fa469cb6b7f371998f500b1adefb4c5372a5f678  # v1.0.0
+      with:
+        environment: testing
+        kubernetes-context: testing
+        namespace: apps-platform-documentation
+        flux-resource: helmrelease/platform-documentation
+        chart-version: '${{ steps.commit-version.outputs.version }}'
+        github-token: ${{ github.token }}
