@@ -23,6 +23,10 @@ jobs:
           api-server: ${{ vars.K8S_API_SERVER_DEVELOPMENT }}
           certificate-authority-data:
             ${{ secrets.K8S_CERTIFICATE_AUTHORITY_DATA_DEVELOPMENT }}
+          keycloak-url: ${{ vars.KEYCLOAK_URL }}
+          token-exchange-client-id: ${{ secrets.TOKEN_EXCHANGE_CLIENT_ID }}
+          token-exchange-client-secret: ${{ secrets.TOKEN_EXCHANGE_CLIENT_SECRET }}
+
 
       - name: Cleanup previews older than 7 days
         uses: eidp/actions-kubernetes/teardown-preview@fa469cb6b7f371998f500b1adefb4c5372a5f678 # v1.0.0
