@@ -30,7 +30,7 @@ jobs:
 
     - name: Create Kubernetes context
       id: create-context
-      uses: eidp/actions-kubernetes/create-context@fa469cb6b7f371998f500b1adefb4c5372a5f678
+      uses: eidp/actions-kubernetes/create-context@fa469cb6b7f371998f500b1adefb4c5372a5f678 # v1.0.0
       with:
         cluster: testing
         api-server: ${{ vars.K8S_API_SERVER_TESTING }}
@@ -41,7 +41,7 @@ jobs:
         token-exchange-client-secret: ${{ secrets.TOKEN_EXCHANGE_CLIENT_SECRET }}
 
     - name: Verify deployment test environment
-      uses: eidp/actions-kubernetes/verify-up@fa469cb6b7f371998f500b1adefb4c5372a5f678
+      uses: eidp/actions-kubernetes/verify-up@fa469cb6b7f371998f500b1adefb4c5372a5f678  # v1.0.0
       with:
         environment: testing
         kubernetes-context: testing
