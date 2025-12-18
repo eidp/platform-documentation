@@ -22,6 +22,9 @@ jobs:
     steps:
     # This step fetches the semantic version based on the commit history.
     # The same version should be used to tag the Helm chart, in case your repository contains one.
+    - name: Checkout code
+      uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
+      
     - name: Fetch commit version
       id: commit-version
       uses: eidp/actions-semver/fetch-commit-version@d4f33761d7dafbeff3241fe8afe927a1d7516703 # v0.4.0
