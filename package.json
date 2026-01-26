@@ -40,7 +40,7 @@
     "docusaurus-plugin-llms": "0.2.2",
     "docusaurus-plugin-sass": "0.2.6",
     "markdownlint-cli": "0.47.0",
-    "prettier": "3.8.0",
+    "prettier": "3.8.1",
     "sass": "1.97.2",
     "markdownlint-sentences-per-line": "0.1.1",
     "typescript": "5.9.3"
