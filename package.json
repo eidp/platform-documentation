@@ -42,7 +42,7 @@
     "markdownlint-cli": "0.47.0",
     "prettier": "3.8.1",
     "sass": "1.97.3",
-    "markdownlint-sentences-per-line": "0.1.1",
+    "markdownlint-sentences-per-line": "0.1.2",
     "typescript": "5.9.3"
   },
   "browserslist": {
