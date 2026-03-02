@@ -17,7 +17,7 @@ jobs:
     steps:
       - name: Create Kubernetes context
         id: create-context
-        uses: eidp/actions-kubernetes/create-context@fa469cb6b7f371998f500b1adefb4c5372a5f678 # v1.0.0
+        uses: eidp/actions-kubernetes/create-context@62855aa245147c49e94cb1b0fd34f36c4c18ab64 # v1.1.0
         with:
           cluster: development
           api-server: ${{ vars.K8S_API_SERVER_DEVELOPMENT }}
@@ -29,7 +29,7 @@ jobs:
 
 
       - name: Cleanup previews older than 7 days
-        uses: eidp/actions-kubernetes/teardown-preview@fa469cb6b7f371998f500b1adefb4c5372a5f678 # v1.0.0
+        uses: eidp/actions-kubernetes/teardown-preview@62855aa245147c49e94cb1b0fd34f36c4c18ab64 # v1.1.0
         with:
           kubernetes-context: ${{ steps.create-context.outputs.context-name }}
           github-token: ${{ github.token }}
