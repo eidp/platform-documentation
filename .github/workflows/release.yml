@@ -30,7 +30,7 @@ jobs:
 
     - name: Promote Docker Image
       id: promote-image
-      uses: eidp/actions-docker/promote@aff1997ef07eb2ede4ca5c8b1ed9bffa24416d0a # v0.1.1
+      uses: eidp/actions-docker/promote@326947db030d535fe2ca7a59801fcf2621de5aea # v0.1.2
       with:
         image: ${{ vars.HARBOR_HOST }}/platform-documentation
         registry: ${{ vars.HARBOR_HOST }}
