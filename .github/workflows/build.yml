@@ -48,7 +48,7 @@ jobs:
 
     - name: Docker build and push
       id: docker-build-push
-      uses: eidp/actions-docker/build-push@aff1997ef07eb2ede4ca5c8b1ed9bffa24416d0a # v0.1.1
+      uses: eidp/actions-docker/build-push@326947db030d535fe2ca7a59801fcf2621de5aea # v0.1.2
       with:
         image: ${{ vars.HARBOR_HOST }}/platform-documentation
         registry: ${{ vars.HARBOR_HOST }}
