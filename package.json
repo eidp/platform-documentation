@@ -43,7 +43,7 @@
     "prettier": "3.8.2",
     "sass": "1.99.0",
     "markdownlint-sentences-per-line": "0.1.3",
-    "typescript": "6.0.2"
+    "typescript": "6.0.3"
   },
   "browserslist": {
     "production": [
