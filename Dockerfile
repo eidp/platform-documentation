@@ -1,4 +1,4 @@
-FROM cr.eidp.io/docker/nginxinc/nginx-unprivileged:1.30-alpine@sha256:35a4455cd4153d7cd0ae1fcfa42451884ef19848202606f144d9a089376c7e6c
+FROM cr.eidp.io/docker/nginxinc/nginx-unprivileged:1.30-alpine@sha256:808f7846d21a9c94cf53833e8807a00a33fd0b65cc47fb05b79efe366c2d201f
 
 LABEL org.opencontainers.image.authors="EIDP"
 
